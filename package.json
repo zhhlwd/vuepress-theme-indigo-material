@@ -1,26 +1,33 @@
 {
-  "name": "template",
+  "name": "vuepress-theme-indigo-material",
   "version": "1.0.0",
-  "description": "template",
-  "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
-  },
+  "description": "Material Design theme for vuepress",
+  "main": "index.js",
+  "private": false,
   "keywords": [
+    "vue",
     "vuepress",
     "theme",
     "material design"
   ],
+  "author": {
+    "name": "zhhlwd",
+    "email": "1962421071@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhhlwd/vuepress-theme-indigo-material"
+  },
+  "license": "MIT",
   "dependencies": {
     "element-ui": "^2.5.4",
-    "vssue": "^0.7.1",
-    "vuepress-theme-indigo-material": "^1.0.0"
+    "vssue": "^0.7.1"
   },
   "devDependencies": {
-    "vuepress": "^1.0.0-alpha.39",
     "babel-plugin-component": "^1.1.1",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "vuepress": "^1.0.0-alpha.39"
   }
 }

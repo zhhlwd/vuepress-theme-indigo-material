@@ -1,0 +1,136 @@
+pre, pre[class*="language-"]
+  padding 1.25rem 1.5rem
+  margin 0.85rem 0
+  overflow auto
+
+div[class*="language-"]
+  position relative
+  
+  .highlight-lines
+    user-select none
+    padding-top 1.3rem
+    position absolute
+    top 0
+    left 0
+    width 100%
+    line-height 1.4
+    .highlighted
+      background-color rgba(0, 0, 0, 0.5)
+  pre, pre[class*="language-"]
+    position relative
+    z-index 1
+  &::before
+    position absolute
+    z-index 3
+    top 0.8em
+    right 1em
+    font-size 0.75rem
+    color rgba(255, 255, 255, 0.4)
+  &:not(.line-numbers-mode)
+    .line-numbers-wrapper
+      display none
+  &.line-numbers-mode
+    .highlight-lines .highlighted
+        position relative
+        &:before
+          content ''
+          position absolute
+          z-index 3
+          left 0
+          top 0
+          display block
+          width 3.5rem
+          height 100%
+    pre
+      padding-left 3.5rem + 1 rem
+      vertical-align middle
+      z-index 0
+    .line-numbers-wrapper
+      position absolute
+      top 0
+      width 3.5rem
+      text-align center
+      color rgba(255, 255, 255, 0.3)
+      padding 1.5rem 0
+      line-height 1.6
+      br
+        user-select none
+      .line-number
+        position relative
+        z-index 1
+        user-select none
+        font-size 0.85em
+    &::after
+      content ''
+      position absolute
+      z-index 0
+      top 0
+      left 0
+      width: 3.5rem;
+      height 100%
+      border-radius 6px 0 0 6px
+      border-right 1px solid rgba(0, 0, 0, 66%)
+      background-color $codeBgColor
+code, kbd, pre, samp
+  font-family: $font-code
+  background-color: transparent 
+
+  code, kbd {
+    display: inline;
+    margin: 0 0.3em;
+    padding: .125em .25em;
+    box-shadow: none;
+  }
+
+pre,
+pre[class*="language-"] {
+  border-radius: 6px;
+  padding: 1.5em 1.75em 1.5em;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  background: #282c34;
+}
+pre[class*='language-'] {
+  position relative
+  &:before {
+    position: absolute;
+    top: 0.4em;
+    right: 1em;
+    font-size: .86em;
+    color: #fff;
+    z-index: 3;
+  }
+}
+
+pre {
+  code {
+    margin: 0;
+    padding: 0;
+    background-color: transparent ;
+    font-size: .85em;
+    font-weight: 400;
+    color: #E06C75;
+    .token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin {
+        color: #C678DD;
+    }
+    .token.boolean, .token.number, .token.function {
+        color: #61AFEF;
+    }
+    .token.punctuation {
+        color: #FFD700;
+    }
+    &:before, &:after {
+      content: '';
+      letter-spacing: 0;
+    }
+  }
+}
+  
+for type, exts in $code-languages
+  pre
+    &.language-{exts[0]}:before
+      content type
+    if exts[1]
+      &.language-{exts[1]}:before
+        content type

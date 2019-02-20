@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+    />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    {{{ userHeadTags
+    }}}
+    {{{ pageMeta
+    }}}
+    {{{ renderResourceHints()
+    }}}
+    {{{ renderStyles()
+    }}}
+  </head>
+  <body>
+    <div id="loader-wrapper" style="display: none;opacity:0">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+    <!--vue-ssr-outlet-->
+    <script src="https://cdn.bootcss.com/vue/2.6.4/vue.min.js" defer></script>
+    {{{ renderScripts() }}}
+    <script
+      src="https://unpkg.com/vssue/dist/vssue.github.min.js"
+      defer
+    ></script>
+  </body>
+</html>
