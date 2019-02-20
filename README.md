@@ -8,7 +8,7 @@
 
 具体感受可以点击我的[博客网站](https://zhhlwd.github.io/)来亲身感受, 部署在 github page 下, 国内请可以点击码云的 [page 地址](https://zhhlwd.gitee.io/)
 
-![demo.gif](https://s2.ax1x.com/2019/02/20/k2U7QO.gif)
+[![demo.gif](https://s2.ax1x.com/2019/02/20/k2U7QO.md.gif)](https://imgchr.com/i/k2U7QO)
 
 正如 VuePress 文档所说:
 
