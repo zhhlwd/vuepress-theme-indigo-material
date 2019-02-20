@@ -12,7 +12,7 @@ module.exports = {
       }
     ]
   ],
-  theme: 'indigo-materia',
+  theme: 'indigo-material',
   locales: {
     '/': {
       lang: 'zh-CN',
