@@ -1,0 +1,26 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "template",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "keywords": [
+    "vuepress",
+    "theme",
+    "material design"
+  ],
+  "dependencies": {
+    "element-ui": "^2.5.4",
+    "vssue": "^0.7.1",
+    "vuepress-theme-indigo-materia": "^1.0.0"
+  },
+  "devDependencies": {
+    "vuepress": "^1.0.0-alpha.39",
+    "babel-plugin-component": "^1.1.1",
+    "moment": "^2.24.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0"
+  }
+}
