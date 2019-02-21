@@ -107,12 +107,28 @@ export default {
     }, 20);
   },
   methods: {
+    throttle(fn, wait, maxTimelong) {
+      var timeout = null,
+        startTime = Date.parse(new Date());
+
+      return function() {
+        if (timeout !== null) clearTimeout(timeout);
+        var curTime = Date.parse(new Date());
+        if (curTime - startTime >= maxTimelong) {
+          fn();
+          startTime = curTime;
+        } else {
+          timeout = setTimeout(fn, wait);
+        }
+      };
+    },
     changeToc() {
       this.hasToc = !this.hasToc;
     },
     getH() {
       this.catalogList.splice(0, this.catalogList.length);
       this.offsetList.splice(0, this.offsetList.length);
+      this.allH.splice(0, this.allH.length);
       if (typeof window === "undefined") return;
       if (!document.querySelector(".content,default")) {
         return;
@@ -192,32 +208,39 @@ export default {
     changeIndex() {
       if (typeof window === "undefined") return;
       const _this = this;
-      window.addEventListener("scroll", function(e) {
-        if (_this.$route.path.slice(0, 7) !== "/posts/") return;
-        let h = _this.getScrollTop();
-        const toc = document.getElementById("post-toc");
-        const postCard = document.getElementById("post-card");
-        if (h >= 190) {
-          toc.classList.add("fixed");
-        } else {
-          toc.classList.remove("fixed");
-        }
-        const navH = document.getElementById("footerPost").offsetTop;
-        if (h >= navH) {
-          toc.classList.remove("fixed");
-        }
-        if (h < navH && h >= navH - 500) {
-          toc.classList.add("fixed");
-        }
-        for (let i = 0, len = _this.allH.length; i < len; i++) {
-          if (i + 1 === _this.allH.length || h < _this.allH[i]) {
-            return (_this.currentIndex = i);
-          }
-          if (h >= _this.allH[i] && h < _this.allH[i + 1]) {
-            return (_this.currentIndex = i);
-          }
-        }
-      });
+      window.addEventListener(
+        "scroll",
+        _this.throttle(
+          function(e) {
+            if (_this.$route.path.slice(0, 7) !== "/posts/") return;
+            let h = _this.getScrollTop();
+            const toc = document.getElementById("post-toc");
+            const postCard = document.getElementById("post-card");
+            if (h >= 190) {
+              toc.classList.add("fixed");
+            } else {
+              toc.classList.remove("fixed");
+            }
+            const navH = document.getElementById("footerPost").offsetTop;
+            if (h >= navH) {
+              toc.classList.remove("fixed");
+            }
+            if (h < navH && h >= navH - 500) {
+              toc.classList.add("fixed");
+            }
+            for (let i = 0, len = _this.allH.length; i < len; i++) {
+              if (i + 1 === _this.allH.length || h < _this.allH[i]) {
+                return (_this.currentIndex = i);
+              }
+              if (h >= _this.allH[i] && h < _this.allH[i + 1]) {
+                return (_this.currentIndex = i);
+              }
+            }
+          },
+          60,
+          110
+        )
+      );
     }
   },
   watch: {

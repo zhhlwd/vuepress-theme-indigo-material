@@ -6,7 +6,7 @@
       class="menu-wrap"
       @select="select"
     >
-      <li>>
+      <li>
         <div
           class="brand-wrap"
           :style="{backgroundImage : `url(${$withBase($themeConfig.brand||'')})`}"
@@ -23,7 +23,7 @@
               >{{$themeConfig.email||'没有email'}}</a>
             </hgroup>
           </div>
-        </div>>
+        </div>
       </li>
       <el-menu-item index="/">
         <i class="iconfont icon-home"></i>
