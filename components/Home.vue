@@ -2,11 +2,9 @@
   <div class="marginTop">
     <el-row type="flex" justify="center" align="middle" v-if="!content.length">
       <el-col :span="20" :xs="{span:23}" :sm="{span:23}" :md="{span:23}" :lg="{span:20}">
-        <el-card class="box-card" key="noHasPost">
-          <div slot="header">
-            <p class="post-title-time">现在什么都没有,快点开始你的第一篇文章吧~~</p>
-          </div>
-        </el-card>
+        <div  key="noHasPost">
+          <p class="post-title-time">现在什么都没有,快点开始你的第一篇文章吧~~</p>
+        </div>
       </el-col>
     </el-row>
     <el-row type="flex" justify="center" align="middle" v-for="item in posts" :key="item.id">
