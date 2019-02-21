@@ -28,7 +28,7 @@ module.exports = {
     searchReply: '什么都没搜到，试一下其它搜索词~',
     author: 'zhhlwd', //侧边栏的设置
     email: '1962421071@qq.com',
-    pagination: 5, //每一页显示的文章个数
+    pagination: '5', //每一页显示的文章个数
     avatar: '/avatar.jpg', //头像地址
     brand: '/brand.jpg', //头像背景图片地址
     github: 'https://github.com/zhhlwd', //点击github跳转的地址
