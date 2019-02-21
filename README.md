@@ -63,11 +63,11 @@ webpack 会把代码分割,按需去利用 jsonp 去请求 js 文件, 这样我�
 - 更快更小,
 - 改进我在一年的的使用中感受到的原主题一些交互和外观, 例如删除分享功能, 移除了打赏功能, 增加移动端文章目录导航等等
 - 更加容易自定义, vuepress 的主题和插件很灵活,只要您会 Vue, 就能利用相关知识修改原主题, 和平时工作中写的页面和 APP 差不多
-- 居于本地数据的全文搜索
+- 基于本地数据的全文搜索
 - 拥抱 vue, 然后能享用它的生态, 例如组件库, 本主题就利用了 element ui
 - 享用 vuepress 的 Markdown 拓展 , 例如在 Markdown 中 使用 Vue,自定义文章摘要
 - 理论上非常好的 SEO
-- 兼容 hexo 原主题写的 markdwon 文件, 不用修改即可搬迁移到本主题, 前提是您原来文件有遵守原主题的规则, 例如在文件顶部有包含 YAML front matte
+- 兼容 hexo 原主题写的 Markdown 文件, 不用修改即可搬迁移到本主题, 前提是您原来文件有遵守原主题的规则, 例如在文件顶部有包含 YAML front matter
 
 ```
 ---
@@ -93,7 +93,7 @@ vuepress 默认有编译一些对老版本浏览器的兼容, 具体控制请看
 
 请确保您的 Node.js 版本 >= 8
 
-安装 git,
+安装 git
 
 最好 npm 下载改用[cnpm](http://npm.taobao.org/)
 
@@ -208,7 +208,7 @@ hexo n '新md文件名'
 hexo d //push 到远程分支
 ```
 
-由于没有自动生成 md 文件的命令,需要手动创建 markdwon 文件,而且要放在 **./docs/posts/** 下, 然后还需要文件顶部像原主题那样写上信息
+由于没有自动生成 md 文件的命令,需要手动创建 Markdown 文件,而且要放在 **./docs/posts/** 下, 然后还需要文件顶部像原主题那样写上信息
 
 ```
 ---
@@ -223,7 +223,7 @@ categories: [读书笔记]
 
 ### markdown 文件的元信息
 
-**title**: 默认取的是文件名, 所以可以不用写了,
+**title**: 文章名只读取这里写的名字,所以**一定要写**, 我的建议是最好文章名和文件名保持一致
 
 **date**: 主题用了 vuepress 的内置插件[@vuepress/plugin-last-updated](https://vuepress.vuejs.org/zh/plugin/official/plugin-last-updated.html#%E9%80%89%E9%A1%B9), 也可以不用写了,
 
