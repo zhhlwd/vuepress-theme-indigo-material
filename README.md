@@ -5,10 +5,11 @@
 - 优化文章目录吸顶功能，固定的瞬间跳动不再显得突兀
 - 内置格式化@vuepress/last-updated 从 git 中读到的时间
 - 优化了编译期间如果文章完全为空的处理
+- 优化文章代码高亮样式和标题
 
 ### 对于老版本升级
 
-- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.3**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
+- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.4**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
 
 ## 介绍
 

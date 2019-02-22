@@ -52,7 +52,7 @@ div[class*="language-"]
       text-align center
       color rgba(255, 255, 255, 0.3)
       padding 1.5rem 0
-      line-height 1.6
+      line-height 1.4
       br
         user-select none
       .line-number
@@ -88,10 +88,10 @@ pre[class*="language-"] {
   padding: 1.5em 1.75em 1.5em;
   white-space: pre-wrap;
   word-break: break-word;
-  line-height: 1.6;
+  line-height: 1.4;
   background: #282c34;
 }
-pre[class*='language-'] {
+div[class*='language-'] {
   position relative
   &:before {
     position: absolute;
@@ -111,7 +111,7 @@ pre {
     white-space: pre;
     font-size: .85em;
     font-weight: 400;
-    color: #E06C75;
+    color: #03A9F4;
     .token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin {
         color: #C678DD;
     }
@@ -121,6 +121,31 @@ pre {
     .token.punctuation {
         color: #FFD700;
     }
+    .token.attr-name,.token.deleted,.token.namespace,.token.tag {
+      color: #e06c75;
+    }
+    .token.attr-value,.token.char,.token.regex,.token.string,.token.variable {
+      color: #69B779;
+    }
+    .token.property {
+      color: #E2DDDD
+    }
+    .token.function-variable.function {
+      color: #49f581;
+    }
+    .token.function-name {
+        color: #6196cc
+    }
+    .token.operator {
+      color: #DA6FBC;
+    }
+    .token.boolean,.token.function,.token.number {
+      color: #f08d49;
+    }
+    .token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog {
+      color: #999
+    }   
+
     &:before, &:after {
       content: '';
       letter-spacing: 0;
@@ -129,7 +154,7 @@ pre {
 }
   
 for type, exts in $code-languages
-  pre
+  div
     &.language-{exts[0]}:before
       content type
     if exts[1]
