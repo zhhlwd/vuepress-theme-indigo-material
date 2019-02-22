@@ -173,7 +173,7 @@ export default {
       });
     },
     getPageIndex() {
-      if (this.content.length === 0) {
+      if (this.content.length === 0 || this.content.length === 1) {
         this.nextPost = NaN;
         this.prevPost = NaN;
         return;
