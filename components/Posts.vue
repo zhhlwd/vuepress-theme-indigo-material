@@ -214,20 +214,7 @@ export default {
           function(e) {
             if (_this.$route.path.slice(0, 7) !== "/posts/") return;
             let h = _this.getScrollTop();
-            const toc = document.getElementById("post-toc");
             const postCard = document.getElementById("post-card");
-            if (h >= 190) {
-              toc.classList.add("fixed");
-            } else {
-              toc.classList.remove("fixed");
-            }
-            const navH = document.getElementById("footerPost").offsetTop;
-            if (h >= navH) {
-              toc.classList.remove("fixed");
-            }
-            if (h < navH && h >= navH - 500) {
-              toc.classList.add("fixed");
-            }
             for (let i = 0, len = _this.allH.length; i < len; i++) {
               if (i + 1 === _this.allH.length || h < _this.allH[i]) {
                 return (_this.currentIndex = i);
@@ -241,6 +228,23 @@ export default {
           110
         )
       );
+      window.addEventListener("scroll", function() {
+        if (_this.$route.path.slice(0, 7) !== "/posts/") return;
+        const toc = document.getElementById("post-toc");
+        let h = _this.getScrollTop();
+        if (h >= 240) {
+          toc.classList.add("fixed");
+        } else {
+          toc.classList.remove("fixed");
+        }
+        const navH = document.getElementById("footerPost").offsetTop;
+        if (h >= navH - 20) {
+          toc.classList.remove("fixed");
+        }
+        if (h < navH && h >= navH - 500) {
+          toc.classList.add("fixed");
+        }
+      });
     }
   },
   watch: {
@@ -259,6 +263,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .post-content {
+  position: relative;
   margin-top: -34px;
   padding-bottom: 40px;
 }
@@ -314,24 +319,21 @@ export default {
   margin-left: 45px;
   height: 60vh;
   overflow-y: auto;
-  width: 22%;
+  width: 19vw;
   top: 69px;
   right: 24px;
   border-radius: 16px;
   background: #f6f6f6;
-  transition: 0.2s all ease-in-out;
 }
 .fixed {
   position: fixed;
-  width: 18.6%;
   top: 69px;
-  right: 20px;
-  margin-top: 0;
 }
 @media (max-width: 1200px) {
   .post-toc {
     position: fixed;
-    top: 69px;
+    top: auto;
+    bottom: 70px;
     right: 20px;
     width: 88%;
     transform: translateX(125%);

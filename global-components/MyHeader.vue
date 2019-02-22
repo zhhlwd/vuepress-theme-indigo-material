@@ -6,19 +6,19 @@
     :class="{headerShadow:hasShadow}"
   >
     <el-row type="flex" align="middle" class="header-warp">
-      <el-col :span="12">
+      <el-col :span="12" :xs="{span:7}">
         <el-row type="flex" align="middle">
           <el-col :span="2">
-            <el-button type="primary" @click="clickMenu" :circle="true">
+            <el-button type="primary" @click="clickMenu" :circle="true" key="menusBtn">
               <i class="iconfont" :class="[iconName]"></i>
             </el-button>
           </el-col>
         </el-row>
       </el-col>
-      <el-col :span="20" :xs="{span:21}">
+      <el-col :span="20" :xs="{span:24}">
         <div class="grid-content bg-purple-light">
           <el-row type="flex" align="middle" justify="end">
-            <el-col :span="13" :xs="{span:24}" :sm="{span:18}" :md="{span:15}" :lg="{span:13}">
+            <el-col :span="13" :xs="{span:24}" :sm="{span:21}" :md="{span:17}" :lg="{span:13}">
               <el-autocomplete
                 class="search-input"
                 popper-class="search-popper"

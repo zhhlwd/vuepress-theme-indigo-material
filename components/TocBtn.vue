@@ -1,25 +1,64 @@
 <template>
-  <el-button type="primary" @click="OpenToc" :circle="true" class="gotop-btn">
-    <i class="iconfont icon-service-directory"></i>
-  </el-button>
+  <span>
+    <el-button type="primary" @click="OpenToc" :circle="true" class="toc-btn">
+      <i class="iconfont icon-service-directory"></i>
+    </el-button>
+    <el-button type="primary" @click="GoTop" :class="{show:show}" :circle="true" class="gotop-btn">
+      <i class="el-icon-arrow-up"></i>
+    </el-button>
+  </span>
 </template>
 <script>
 export default {
   name: "GoTop",
+  data() {
+    return {
+      show: false
+    };
+  },
+  mounted() {
+    this.hasShow();
+  },
   methods: {
     OpenToc() {
       this.$emit("toc");
+    },
+    hasShow() {
+      const _this = this;
+      window.addEventListener("scroll", function(e) {
+        let h = _this.getScrollTop();
+        if (h > 400) {
+          _this.show = true;
+        } else {
+          _this.show = false;
+        }
+      });
+    },
+    GoTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    getScrollTop() {
+      var scrollPos;
+      if (typeof window === "undefined") return;
+      if (window.pageYOffset) {
+        scrollPos = window.pageYOffset;
+      } else if (document.compatMode && document.compatMode != "BackCompat") {
+        scrollPos = document.documentElement.scrollTop;
+      } else if (document.body) {
+        scrollPos = document.body.scrollTop;
+      }
+      return scrollPos;
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-.gotop-btn {
+.gotop-btn,
+.toc-btn {
   position: fixed;
-  right: 70px;
+  right: 15px;
   bottom: 10px;
   z-index: 69;
-  display: none;
   color: #fff;
   background-color: #3f51b5;
   border-color: #3f51b5;
@@ -31,9 +70,27 @@ export default {
     font-weight: 600;
   }
 }
-@media (max-width: 1200px) {
+.toc-btn {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  opacity: 1;
+  transform: scale(1);
+}
+.gotop-btn {
+  display: none;
+  opacity: 0;
+  transform: scale(0);
+}
+@media (min-width: 1200px) {
   .gotop-btn {
     display: inline-block;
   }
+  .toc-btn {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+.show {
+  opacity: 1;
+  transform: scale(1);
 }
 </style>

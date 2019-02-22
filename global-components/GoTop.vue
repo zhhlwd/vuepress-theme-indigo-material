@@ -1,5 +1,12 @@
 <template>
-  <el-button type="primary" @click="GoTop" :class="{show:show}" :circle="true" class="gotop-btn">
+  <el-button
+    type="primary"
+    v-show="!isPost"
+    @click="GoTop"
+    :class="{show:show}"
+    :circle="true"
+    class="gotop-btn"
+  >
     <i class="el-icon-arrow-up"></i>
   </el-button>
 </template>
@@ -10,6 +17,11 @@ export default {
     return {
       show: false
     };
+  },
+  computed: {
+    isPost() {
+      return this.$route.path.slice(1, 6) === "posts" ? true : false;
+    }
   },
   mounted() {
     this.hasShow();
@@ -48,7 +60,7 @@ export default {
 .gotop-btn {
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
   position: fixed;
-  right: 10px;
+  right: 15px;
   bottom: 10px;
   z-index: 69;
   opacity: 0;

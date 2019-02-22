@@ -3,9 +3,20 @@ const moment = require('moment');
 const fs = require('fs');
 
 module.exports = (options, ctx) => ({
-  plugins: ['@vuepress/last-updated'],
+  plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: timestamp => {
+          const moment = require('moment');
+          moment.locale('zh-CN');
+          return moment(timestamp).format('YYYY-MM-DD HH:mm:ss');
+        }
+      }
+    ]
+  ],
   enhanceAppFiles: path.resolve(__dirname, 'enhanceApp.js'),
-  chainWebpack(config, isServer) {
+  chainWebpack(config) {
     const externals = {
       vue: 'Vue',
       vssue: 'Vssue'
@@ -55,12 +66,7 @@ module.exports = (options, ctx) => ({
     const { pages } = ctx;
     //格式化 lastUpdated
     function changeDate(dateStr) {
-      if (dateStr.length === 18) {
-        let arr1 = dateStr.split(' ');
-        let arr2 = arr1[0].split('-');
-        let month = arr2[1].length === 2 ? arr2[1] : '0' + arr2[1];
-        return arr2[0] + '-' + month + '-' + arr2[2] + ' ' + arr1[1];
-      } else if (dateStr.length === undefined) {
+      if (dateStr.length === undefined) {
         let str = JSON.stringify(dateStr, null, 2);
         return str.slice(1, 11) + ' ' + str.slice(12, -6);
       } else {
@@ -91,15 +97,21 @@ module.exports = (options, ctx) => ({
       let sear = {};
       let { excerpt, lastUpdated, path, _strippedContent } = val;
       let { tags, title } = val.frontmatter;
-      _strippedContent = _strippedContent
-        .replace(/[\n\r]/g, ' ')
-        .replace(/\s+/, ' ');
-      excerpt =
-        excerpt ||
-        (_strippedContent.slice(0, 200)
-          ? _strippedContent.slice(0, 200) + '......'
-          : false) ||
-        '';
+      if (_strippedContent) {
+        _strippedContent = _strippedContent
+          .replace(/[\n\r]/g, ' ')
+          .replace(/\s+/, ' ');
+      }
+      if (_strippedContent) {
+        excerpt =
+          excerpt ||
+          (_strippedContent.slice(0, 200)
+            ? _strippedContent.slice(0, 200) + '......'
+            : false) ||
+          '';
+      } else {
+        excerpt = '';
+      }
 
       lastUpdated =
         val.frontmatter.date ||
@@ -107,7 +119,7 @@ module.exports = (options, ctx) => ({
         moment().format('YYYY-MM-DD HH:mm:ss');
       lastUpdated = changeDate(lastUpdated);
       tags = tags || '';
-      title = title || '';
+      title = title || '你忘记写title字段了';
 
       page.excerpt = excerpt;
       page.tags = tags;
