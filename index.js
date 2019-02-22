@@ -157,6 +157,10 @@ module.exports = (options, ctx) => ({
     let index = 0;
     archived.forEach((val, i) => {
       let result1 = changeTime(val.lastUpdated);
+      if (archived.length === 1) {
+        poList[0] = [result1[0]];
+        return poList[0].push(val);
+      }
       if (i + 1 !== archived.length) {
         var result2 = changeTime(archived[i + 1].lastUpdated);
       } else {
