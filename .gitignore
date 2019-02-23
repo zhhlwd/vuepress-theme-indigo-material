@@ -10,7 +10,4 @@ yarn-error.log*
 .vscode
 .idea
 
-data/content.js
-data/poList.js
-data/search.js
-data/tagsList.js
+data/*.js
