@@ -6,7 +6,7 @@
     <content-header :content="content"></content-header>
     <keep-alive>
       <component
-        :is="What"
+        :is="whichComponent"
         :content="content"
       ></component>
     </keep-alive>
@@ -33,7 +33,7 @@ export default {
     Home: () => import("imComponents/Home")
   },
   computed: {
-    What () {
+    whichComponent() {
       let w = "";
       if (typeof window === "undefined") return "Home";
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="tag-content">
+  <div class="tag-content" v-if="showTags">
     <el-row
       type="flex"
       align="center"
@@ -60,7 +60,8 @@ export default {
   data () {
     return {
       tagName: "",
-      tagsList: {}
+      tagsList: {},
+      showTags:false
     };
   },
   props: {
@@ -106,6 +107,7 @@ export default {
     this.checkRouter();
     import(/* webpackChunkName: "tagsList" */ "imData/tagsList.js").then(
       tagsList => {
+        this.showTags = true;
         this.tagsList = tagsList.default;
       }
     );

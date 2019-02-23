@@ -11,6 +11,7 @@
       :lg="{span: 23}"
       class="post-card"
       id="post-card"
+      v-if="showAbout"
     >
       <Content></Content>
       <span id="footerPost"></span>
@@ -20,6 +21,14 @@
 <script>
 export default {
   name: "About",
+  data () {
+    return {
+      showAbout:false
+    }
+  },
+  mounted () {
+    this.showAbout = true
+  },
   props: {
     content: {
       type: Array,

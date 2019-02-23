@@ -1,24 +1,6 @@
 <template>
   <div class="marginTop">
     <el-row
-      v-if="!content.length"
-      type="flex"
-      justify="center"
-      align="middle"
-    >
-      <el-col
-        :span="20"
-        :xs="{span: 23}"
-        :sm="{span: 23}"
-        :md="{span: 23}"
-        :lg="{span: 20}"
-      >
-        <div key="noHasPost">
-          <p class="post-title-time">现在什么都没有,快点开始你的第一篇文章吧~~</p>
-        </div>
-      </el-col>
-    </el-row>
-    <el-row
       type="flex"
       justify="center"
       align="middle"

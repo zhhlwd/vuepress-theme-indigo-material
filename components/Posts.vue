@@ -1,5 +1,5 @@
 <template>
-  <div :key="$page.title">
+  <div :key="$page.title" v-if="showPost">
     <el-row
       type="flex"
       justify="center"
@@ -113,7 +113,8 @@ export default {
       catalogList: [],
       currentIndex: 0,
       offsetList: [],
-      hasToc: false
+      hasToc: false,
+      showPost:false,
     };
   },
   props: {
@@ -129,6 +130,7 @@ export default {
     }, 100);
   },
   mounted () {
+    this.showPost =true;
     setTimeout(() => {
       this.getH();
       this.changeIndex();
