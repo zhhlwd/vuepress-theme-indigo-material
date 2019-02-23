@@ -1,10 +1,10 @@
 <template>
   <el-button
-    type="primary"
-    v-show="!isPost"
     @click="GoTop"
-    :class="{show:show}"
-    :circle="true"
+    v-show="!isPost"
+    :class="{show: show}"
+    type="primary"
+    circle
     class="gotop-btn"
   >
     <i class="el-icon-arrow-up"></i>
@@ -13,23 +13,23 @@
 <script>
 export default {
   name: "GoTop",
-  data() {
+  data () {
     return {
       show: false
     };
   },
   computed: {
-    isPost() {
+    isPost () {
       return this.$route.path.slice(1, 6) === "posts" ? true : false;
     }
   },
-  mounted() {
+  mounted () {
     this.hasShow();
   },
   methods: {
-    hasShow() {
+    hasShow () {
       const _this = this;
-      window.addEventListener("scroll", function(e) {
+      window.addEventListener("scroll", function (e) {
         let h = _this.getScrollTop();
         if (h > 400) {
           _this.show = true;
@@ -38,10 +38,10 @@ export default {
         }
       });
     },
-    GoTop() {
+    GoTop () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
-    getScrollTop() {
+    getScrollTop () {
       var scrollPos;
       if (typeof window === "undefined") return;
       if (window.pageYOffset) {

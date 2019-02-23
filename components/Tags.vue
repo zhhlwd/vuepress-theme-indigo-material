@@ -1,31 +1,53 @@
 <template>
   <div class="tag-content">
-    <el-row type="flex" align="center" justify="center">
+    <el-row
+      type="flex"
+      align="center"
+      justify="center"
+    >
       <el-col
         :span="20"
-        :xs="{span:23}"
-        :sm="{span:22}"
-        :md="{span:22}"
-        :lg="{span:20}"
+        :xs="{span: 23}"
+        :sm="{span: 22}"
+        :md="{span: 22}"
+        :lg="{span: 20}"
         class="tag-card"
       >
-        <el-tag @click="whatTag" v-for="tag in tagsList" size="medium" :hit="true">{{tag[0].name}}</el-tag>
+        <el-tag
+          @click="whatTag"
+          v-for="(tag, index) in tagsList"
+          :key="index"
+          size="medium"
+          :hit="true"
+        >{{tag[0].name}}</el-tag>
       </el-col>
     </el-row>
-    <div v-if="hasTagsList.length" class="tag-warp">
-      <el-row type="flex" align="center" justify="center" class="post-list">
+    <div
+      v-if="hasTagsList.length"
+      class="tag-warp"
+    >
+      <el-row
+        type="flex"
+        align="center"
+        justify="center"
+        class="post-list"
+      >
         <el-col
-          v-for="post in hasTagsList"
+          v-for="(post, index) in hasTagsList"
+          :key="index"
           :span="10"
-          :xs="{span:23}"
-          :sm="{span:11}"
-          :md="{span:11}"
-          :lg="{span:10}"
+          :xs="{span: 23}"
+          :sm="{span: 11}"
+          :md="{span: 11}"
+          :lg="{span: 10}"
           class="list"
         >
           <el-card>
             <div class="post-title-time ellipsis">{{post.lastUpdated}}</div>
-            <router-link :to="post.path" class="post-title-link">{{post.title}}</router-link>
+            <router-link
+              :to="post.path"
+              class="post-title-link"
+            >{{post.title}}</router-link>
           </el-card>
         </el-col>
       </el-row>
@@ -35,7 +57,7 @@
 <script>
 export default {
   name: "Tags",
-  data() {
+  data () {
     return {
       tagName: "",
       tagsList: {}
@@ -44,13 +66,11 @@ export default {
   props: {
     content: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: () => []
     }
   },
   computed: {
-    hasTagsList() {
+    hasTagsList () {
       if (!this.tagsList[this.tagName]) {
         return [];
       }
@@ -58,12 +78,12 @@ export default {
     }
   },
   methods: {
-    whatTag(e) {
+    whatTag (e) {
       this.tagName = e.target.innerText;
       if (typeof window === "undefined") return;
       document.getElementById("conentHeader").innerText = e.target.innerText;
     },
-    checkRouter() {
+    checkRouter () {
       if (this.$route.params.tag) {
         this.tagName = this.$route.params.tag;
         if (typeof window === "undefined") return;
@@ -74,7 +94,7 @@ export default {
     }
   },
   watch: {
-    $route(to, from) {
+    $route (to, from) {
       if (to.params.tag) {
         this.tagName = to.params.tag;
         if (typeof window === "undefined") return;
@@ -82,7 +102,7 @@ export default {
       }
     }
   },
-  created() {
+  created () {
     this.checkRouter();
     import(/* webpackChunkName: "tagsList" */ "imData/tagsList.js").then(
       tagsList => {

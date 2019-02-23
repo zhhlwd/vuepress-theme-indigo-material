@@ -2,7 +2,7 @@
 import "imStyles/vssue.styl";
 export default {
   name: "MyVssue",
-  render: function(h) {
+  render (h) {
     if (process.env.NODE_ENV === "development") {
       var name = "development";
     } else {

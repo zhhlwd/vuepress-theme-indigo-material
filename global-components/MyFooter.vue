@@ -1,13 +1,16 @@
 <template>
   <el-footer class="container-footer">
     <el-row
-      :class="{footerMargin:!isHide}"
+      :class="{footerMargin: !isHide}"
       type="flex"
       justify="center"
       align="center"
       class="footer-warp"
     >
-      <el-col :span="24" class="footer-top">
+      <el-col
+        :span="24"
+        class="footer-top"
+      >
         <p class="ellipsis">
           <span>
             博客内容遵循
@@ -18,20 +21,26 @@
           </span>
         </p>
       </el-col>
-      <el-col :span="24" class="footer-bottom">
+      <el-col
+        :span="24"
+        class="footer-bottom"
+      >
         <p class="ellipsis">
           <span v-if="content.length !== 0">
             <span>
-              {{($site.title||"")
+              {{($site.title || "")
               + ' © '
-              +content[content.length - 1].lastUpdated.slice(0,7)
+              +content[content.length - 1].lastUpdated.slice(0, 7)
               +" ~ "
-              +content[0].lastUpdated.slice(0,7)}}
+              +content[0].lastUpdated.slice(0, 7)}}
             </span>
           </span>
           <span>
             Power by
-            <a href="https://vuepress.vuejs.org/zh/" target="_blank">VuePress</a> Theme
+            <a
+              href="https://vuepress.vuejs.org/zh/"
+              target="_blank"
+            >VuePress</a> Theme
             <a
               href="https://github.com/zhhlwd/vuepress-theme-indigo-material"
               target="_blank"
@@ -52,9 +61,7 @@ export default {
     },
     content: {
       type: Array,
-      default() {
-        return [];
-      }
+      default: () => []
     }
   }
 };

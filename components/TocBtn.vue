@@ -1,9 +1,20 @@
 <template>
   <span>
-    <el-button type="primary" @click="OpenToc" :circle="true" class="toc-btn">
+    <el-button
+      @click="OpenToc"
+      type="primary"
+      circle
+      class="toc-btn"
+    >
       <i class="iconfont icon-service-directory"></i>
     </el-button>
-    <el-button type="primary" @click="GoTop" :class="{show:show}" :circle="true" class="gotop-btn">
+    <el-button
+      @click="GoTop"
+      :class="{show: show}"
+      type="primary"
+      circle
+      class="gotop-btn"
+    >
       <i class="el-icon-arrow-up"></i>
     </el-button>
   </span>
@@ -11,21 +22,21 @@
 <script>
 export default {
   name: "GoTop",
-  data() {
+  data () {
     return {
       show: false
     };
   },
-  mounted() {
+  mounted () {
     this.hasShow();
   },
   methods: {
-    OpenToc() {
+    OpenToc () {
       this.$emit("toc");
     },
-    hasShow() {
+    hasShow () {
       const _this = this;
-      window.addEventListener("scroll", function(e) {
+      window.addEventListener("scroll", function (e) {
         let h = _this.getScrollTop();
         if (h > 400) {
           _this.show = true;
@@ -34,10 +45,10 @@ export default {
         }
       });
     },
-    GoTop() {
+    GoTop () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
-    getScrollTop() {
+    getScrollTop () {
       var scrollPos;
       if (typeof window === "undefined") return;
       if (window.pageYOffset) {
