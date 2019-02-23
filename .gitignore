@@ -10,3 +10,8 @@ yarn-error.log*
 # Editor directory and files
 .vscode
 .idea
+
+/data/content.js
+/data/poList.js
+/data/search.js
+/data/tagsList.js
