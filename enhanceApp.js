@@ -1,5 +1,5 @@
 import routes from 'imRouter/routes';
-import importElement from 'imUntil/importElement';
+import importElement from 'imUtils/importElement';
 
 import 'imStyles/palette.styl';
 import 'imStyles/index.styl';

@@ -1,49 +1,74 @@
 <template>
-  <el-aside class="menu" width="auto" :class="{ menuHide : isHide }">
+  <el-aside
+    class="menu"
+    width="auto"
+    :class="{ menuHide: isHide }"
+  >
     <el-menu
-      :default-active="$route.path.slice(0,7)"
+      @select="select"
+      :default-active="$route.path.slice(0, 7)"
       active-text-color="#3f51b5"
       class="menu-wrap"
-      @select="select"
     >
       <li>
         <div
           class="brand-wrap"
-          :style="{backgroundImage : `url(${$withBase($themeConfig.brand||'')})`}"
+          :style="{backgroundImage : `url(${$withBase($themeConfig.brand || '')})`}"
         >
           <div class="brand">
-            <router-link to="/" class="avatar waves-effect waves-circle waves-light">
-              <img :src="$withBase($themeConfig.avatar||'')">
+            <router-link
+              to="/"
+              class="avatar waves-effect waves-circle waves-light"
+            >
+              <img :src="$withBase($themeConfig.avatar || '')">
             </router-link>
             <hgroup class="introduce">
-              <div class="nickname">{{$themeConfig.author||'欢迎光临'}}</div>
+              <div class="nickname">{{$themeConfig.author || '欢迎光临'}}</div>
               <a
-                :title="$themeConfig.email||'没有email'"
+                :title="$themeConfig.email || '没有email'"
                 class="mail"
-              >{{$themeConfig.email||'没有email'}}</a>
+              >{{$themeConfig.email || '没有email'}}</a>
             </hgroup>
           </div>
         </div>
       </li>
       <el-menu-item index="/">
         <i class="iconfont icon-home"></i>
-        <span class="item-title" slot="title">{{$themeConfig.menus.home||'主页'}}</span>
+        <span
+          class="item-title"
+          slot="title"
+        >{{$themeConfig.menus.home || '主页'}}</span>
       </el-menu-item>
       <el-menu-item index="/tags/">
         <i class="iconfont icon-biaoqian"></i>
-        <span class="item-title" slot="title">{{$themeConfig.menus.tags||'标签分类'}}</span>
+        <span
+          class="item-title"
+          slot="title"
+        >{{$themeConfig.menus.tags || '标签分类'}}</span>
       </el-menu-item>
       <el-menu-item index="/all/">
         <i class="iconfont icon-wenzhang"></i>
-        <span class="item-title" slot="title">{{$themeConfig.menus.all||'时间归档'}}</span>
+        <span
+          class="item-title"
+          slot="title"
+        >{{$themeConfig.menus.all || '时间归档'}}</span>
       </el-menu-item>
-      <el-menu-item index="/github/" v-if="$themeConfig.github">
+      <el-menu-item
+        index="/github/"
+        v-if="$themeConfig.github"
+      >
         <i class="iconfont icon-github"></i>
-        <span class="item-title" slot="title">{{$themeConfig.menus.github||'GitHub'}}</span>
+        <span
+          class="item-title"
+          slot="title"
+        >{{$themeConfig.menus.github || 'GitHub'}}</span>
       </el-menu-item>
       <el-menu-item index="/about/">
         <i class="iconfont icon-aboutme"></i>
-        <span class="item-title" slot="title">{{$themeConfig.menus.about||'自我介绍'}}</span>
+        <span
+          class="item-title"
+          slot="title"
+        >{{$themeConfig.menus.about || '自我介绍'}}</span>
       </el-menu-item>
     </el-menu>
   </el-aside>
@@ -58,7 +83,7 @@ export default {
     }
   },
   methods: {
-    select(key) {
+    select (key) {
       if (key === "/github/") {
         window.open(this.$themeConfig.github);
       } else {

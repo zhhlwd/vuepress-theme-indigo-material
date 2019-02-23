@@ -45,7 +45,7 @@ module.exports = (options, ctx) => ({
     imRouter: path.resolve(__dirname, 'router'),
     imComponents: path.resolve(__dirname, 'components'),
     imData: path.resolve(__dirname, 'data'),
-    imUntil: path.resolve(__dirname, 'until')
+    imUtils: path.resolve(__dirname, 'utils')
   },
   async ready() {
     //生成客户端所需的数据

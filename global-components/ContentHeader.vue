@@ -1,7 +1,11 @@
 <template>
   <div class="content-header index-header">
     <div class="container fade-scale in">
-      <h1 id="conentHeader" class="title" :class="{'post-content-header':isPosts}">{{title}}</h1>
+      <h1
+        id="conentHeader"
+        class="title"
+        :class="{'post-content-header': isPosts}"
+      >{{title}}</h1>
       <h5 class="subtitle">{{description}}</h5>
     </div>
   </div>
@@ -9,7 +13,7 @@
 <script>
 export default {
   name: "FixedHeader",
-  data() {
+  data () {
     return {
       description: "",
       isPosts: false
@@ -18,13 +22,11 @@ export default {
   props: {
     content: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: () => []
     }
   },
   computed: {
-    title() {
+    title () {
       let t;
       switch (this.$route.path.slice(1, 6)) {
         case "posts":

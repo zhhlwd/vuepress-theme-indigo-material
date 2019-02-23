@@ -1,10 +1,14 @@
 <template>
-  <el-row type="flex" justify="center" class="post-content">
+  <el-row
+    type="flex"
+    justify="center"
+    class="post-content"
+  >
     <el-col
-      :xs="{span:24}"
-      :sm="{span:23}"
-      :md="{span:23}"
-      :lg="{span:23}"
+      :xs="{span: 24}"
+      :sm="{span: 23}"
+      :md="{span: 23}"
+      :lg="{span: 23}"
       class="post-card"
       id="post-card"
     >
@@ -19,9 +23,7 @@ export default {
   props: {
     content: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: () => []
     }
   }
 };

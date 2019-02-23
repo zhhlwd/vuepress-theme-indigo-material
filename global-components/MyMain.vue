@@ -1,8 +1,14 @@
 <template>
-  <el-main class="my-main" :style="{marginLeft:mainLeft+'px'}">
+  <el-main
+    class="my-main"
+    :style="{marginLeft: mainLeft + 'px'}"
+  >
     <content-header :content="content"></content-header>
     <keep-alive>
-      <component :is="What" :content="content"></component>
+      <component
+        :is="What"
+        :content="content"
+      ></component>
     </keep-alive>
   </el-main>
 </template>
@@ -16,9 +22,7 @@ export default {
     },
     content: {
       type: Array,
-      default() {
-        return [];
-      }
+      default: () => []
     }
   },
   components: {
@@ -29,7 +33,7 @@ export default {
     Home: () => import("imComponents/Home")
   },
   computed: {
-    What() {
+    What () {
       let w = "";
       if (typeof window === "undefined") return "Home";
 
@@ -69,7 +73,7 @@ export default {
       }
       return w;
     },
-    mainLeft() {
+    mainLeft () {
       let l = 230;
       if (this.isHide) {
         l = 60;

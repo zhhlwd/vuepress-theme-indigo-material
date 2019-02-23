@@ -1,0 +1,8 @@
+/dist
+/data
+.gitignore
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

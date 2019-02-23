@@ -1,67 +1,97 @@
 <template>
   <div :key="$page.title">
-    <el-row type="flex" justify="center" class="post-content">
+    <el-row
+      type="flex"
+      justify="center"
+      class="post-content"
+    >
       <el-col
         :span="16"
-        :xs="{span:24}"
-        :sm="{span:23}"
-        :md="{span:23}"
-        :lg="{span:16}"
+        :xs="{span: 24}"
+        :sm="{span: 23}"
+        :md="{span: 23}"
+        :lg="{span: 16}"
         class="post-card"
         id="post-card"
       >
         <Content></Content>
         <span id="footerPost"></span>
       </el-col>
-      <el-col :span="6" class="post-toc" id="post-toc" :class="{'open-toc':hasToc}">
+      <el-col
+        :span="6"
+        class="post-toc"
+        id="post-toc"
+        :class="{'open-toc': hasToc}"
+      >
         <h4 class="catalog-title">TOC</h4>
         <div class="catalog-body">
-          <ul id="catalog-list" class="catalog-list">
+          <ul
+            id="catalog-list"
+            class="catalog-list"
+          >
             <li
               v-for="(item,index) in catalogList"
+              :key="index"
               class="toc-li"
-              :class="{active:currentIndex===index}"
+              :class="{active:currentIndex === index}"
             >
               <a
                 class="toc-link ellipsis"
-                :href="'#'+item"
-                :style="{marginLeft:offsetList[index]*12+'px'}"
-              >{{'H'+(offsetList[index]+1)+' . '+item}}</a>
+                :href="'#' + item"
+                :style="{marginLeft: offsetList[index] * 12 + 'px'}"
+              >{{'H' + (offsetList[index] + 1) + ' . ' + item}}</a>
             </li>
           </ul>
         </div>
       </el-col>
     </el-row>
-    <el-row type="flex" justify="space-around" class="post-nav">
-      <el-col :span="7" class="post-prev">
+    <el-row
+      type="flex"
+      justify="space-around"
+      class="post-nav"
+    >
+      <el-col
+        :span="7"
+        class="post-prev"
+      >
         <div v-if="!isNaN(prevPost)">
-          <router-link :to="content[prevPost].path||'/'">
+          <router-link :to="content[prevPost].path || '/'">
             <i class="el-icon-arrow-left"></i> Prev
           </router-link>
           <router-link
             tag="p"
-            :to="content[prevPost].path||'/'"
+            :to="content[prevPost].path || '/'"
             class="nav-title"
           >{{content[prevPost].title}}</router-link>
         </div>
       </el-col>
-      <el-col class="post-next" :lg="{pull:5}" :span="7">
+      <el-col
+        class="post-next"
+        :lg="{pull: 5}"
+        :span="7"
+      >
         <div v-if="!isNaN(nextPost)">
-          <router-link :to="content[nextPost].path||'/'">
+          <router-link :to="content[nextPost].path || '/'">
             Next
             <i class="el-icon-arrow-right"></i>
           </router-link>
           <router-link
             tag="p"
-            :to="content[nextPost].path||'/'"
+            :to="content[nextPost].path || '/'"
             class="nav-title"
           >{{content[nextPost].title}}</router-link>
         </div>
       </el-col>
     </el-row>
-    <el-row type="flex" justify="center">
-      <el-col :span="23" v-if="$themeConfig.vssue.need && $page.title">
-        <my-vssue/>
+    <el-row
+      type="flex"
+      justify="center"
+    >
+      <el-col
+        :span="23"
+        v-if="$themeConfig.vssue.need && $page.title"
+      >
+        <my-vssue />
       </el-col>
     </el-row>
     <toc-btn @toc="changeToc"></toc-btn>
@@ -75,7 +105,7 @@ export default {
     TocBtn,
     MyVssue: () => import("imComponents/MyVssue")
   },
-  data() {
+  data () {
     return {
       nextPost: 0,
       prevPost: 3,
@@ -89,29 +119,27 @@ export default {
   props: {
     content: {
       type: Array,
-      default: () => {
-        return [];
-      }
+      default: () => []
     }
   },
-  created() {
+  created () {
     this.getPageIndex();
     setTimeout(() => {
       this.getPageIndex();
     }, 100);
   },
-  mounted() {
+  mounted () {
     setTimeout(() => {
       this.getH();
       this.changeIndex();
     }, 20);
   },
   methods: {
-    throttle(fn, wait, maxTimelong) {
+    throttle (fn, wait, maxTimelong) {
       var timeout = null,
         startTime = Date.parse(new Date());
 
-      return function() {
+      return function () {
         if (timeout !== null) clearTimeout(timeout);
         var curTime = Date.parse(new Date());
         if (curTime - startTime >= maxTimelong) {
@@ -122,10 +150,10 @@ export default {
         }
       };
     },
-    changeToc() {
+    changeToc () {
       this.hasToc = !this.hasToc;
     },
-    getH() {
+    getH () {
       this.catalogList.splice(0, this.catalogList.length);
       this.offsetList.splice(0, this.offsetList.length);
       this.allH.splice(0, this.allH.length);
@@ -172,7 +200,7 @@ export default {
         this.offsetList.push(val);
       });
     },
-    getPageIndex() {
+    getPageIndex () {
       if (this.content.length === 0 || this.content.length === 1) {
         this.nextPost = NaN;
         this.prevPost = NaN;
@@ -193,7 +221,7 @@ export default {
         }
       }
     },
-    getScrollTop() {
+    getScrollTop () {
       if (typeof window === "undefined") return;
       var scrollPos;
       if (window.pageYOffset) {
@@ -205,13 +233,13 @@ export default {
       }
       return scrollPos;
     },
-    changeIndex() {
+    changeIndex () {
       if (typeof window === "undefined") return;
       const _this = this;
       window.addEventListener(
         "scroll",
         _this.throttle(
-          function(e) {
+          function (e) {
             if (_this.$route.path.slice(0, 7) !== "/posts/") return;
             let h = _this.getScrollTop();
             const postCard = document.getElementById("post-card");
@@ -228,7 +256,7 @@ export default {
           110
         )
       );
-      window.addEventListener("scroll", function() {
+      window.addEventListener("scroll", function () {
         if (_this.$route.path.slice(0, 7) !== "/posts/") return;
         const toc = document.getElementById("post-toc");
         let h = _this.getScrollTop();
@@ -248,7 +276,7 @@ export default {
     }
   },
   watch: {
-    $route(to, from) {
+    $route (to, from) {
       if (to.path.slice(0, 7) === "/posts/") {
         this.getPageIndex();
         setTimeout(() => {

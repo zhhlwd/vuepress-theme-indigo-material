@@ -1,46 +1,80 @@
 <template>
   <el-header
     id="topHeader"
-    :style="{paddingLeft:headerLeft+'px'}"
+    :style="{paddingLeft: headerLeft + 'px'}"
     class="top-header"
-    :class="{headerShadow:hasShadow}"
+    :class="{headerShadow: hasShadow}"
   >
-    <el-row type="flex" align="middle" class="header-warp">
-      <el-col :span="12" :xs="{span:7}">
-        <el-row type="flex" align="middle">
+    <el-row
+      type="flex"
+      align="middle"
+      class="header-warp"
+    >
+      <el-col
+        :span="12"
+        :xs="{span: 7}"
+      >
+        <el-row
+          type="flex"
+          align="middle"
+        >
           <el-col :span="2">
-            <el-button type="primary" @click="clickMenu" :circle="true" key="menusBtn">
-              <i class="iconfont" :class="[iconName]"></i>
+            <el-button
+              @click="clickMenu"
+              type="primary"
+              circle
+              key="menusBtn"
+            >
+              <i
+                class="iconfont"
+                :class="[iconName]"
+              ></i>
             </el-button>
           </el-col>
         </el-row>
       </el-col>
-      <el-col :span="20" :xs="{span:24}">
+      <el-col
+        :span="20"
+        :xs="{span: 24}"
+      >
         <div class="grid-content bg-purple-light">
-          <el-row type="flex" align="middle" justify="end">
-            <el-col :span="13" :xs="{span:24}" :sm="{span:21}" :md="{span:17}" :lg="{span:13}">
+          <el-row
+            type="flex"
+            align="middle"
+            justify="end"
+          >
+            <el-col
+              :span="13"
+              :xs="{span: 24}"
+              :sm="{span: 21}"
+              :md="{span: 17}"
+              :lg="{span: 13}"
+            >
               <el-autocomplete
+                v-model="searchVal"
+                @select="handleSelect"
                 class="search-input"
                 popper-class="search-popper"
-                v-model="searchVal"
                 :fetch-suggestions="querySearch"
                 :placeholder="placeholder"
-                @select="handleSelect"
                 size="small"
                 :trigger-on-focus="false"
                 clearable
               >
-                <i slot="suffix" class="el-input__icon el-icon-search search-ico"></i>
+                <i
+                  slot="suffix"
+                  class="el-input__icon el-icon-search search-ico"
+                ></i>
                 <template slot-scope="{ item }">
-                  <div class="name">{{item.title }}</div>
+                  <div class="name">{{item.title}}</div>
                   <span
                     class="addr addr-active"
                     v-if="hasResults"
-                  >{{ item.strippedContent.slice(item.searchIndex,item.searchIndex+queryStrlen) }}</span>
+                  >{{ item.strippedContent.slice(item.searchIndex, item.searchIndex + queryStrlen) }}</span>
                   <span
                     class="addr addr-last"
                     v-if="hasResults"
-                  >{{ item.strippedContent.slice(item.searchIndex+queryStrlen) }}</span>
+                  >{{ item.strippedContent.slice(item.searchIndex + queryStrlen) }}</span>
                 </template>
               </el-autocomplete>
             </el-col>
@@ -60,12 +94,10 @@ export default {
     },
     restaurants: {
       type: Array,
-      default() {
-        return [];
-      }
+      default: () => []
     }
   },
-  data() {
+  data () {
     return {
       headerLeft: 260,
       searchVal: "",
@@ -75,13 +107,13 @@ export default {
     };
   },
   computed: {
-    placeholder() {
+    placeholder () {
       return this.$themeConfig.placeholder || "";
     },
-    searchReply() {
+    searchReply () {
       return this.$themeConfig.searchReply || "什么都没搜到，试一下其它搜索词~";
     },
-    iconName() {
+    iconName () {
       if (typeof window === "undefined") return "icon-caidan";
       if (document.body.clientWidth <= 1200) {
         return this.showIcon ? "icon-guanbi" : "icon-caidan";
@@ -90,7 +122,7 @@ export default {
     }
   },
   methods: {
-    clickMenu() {
+    clickMenu () {
       this.$emit("clickMenu");
       if (typeof window === "undefined") return;
       if (document.body.clientWidth <= 1200) {
@@ -102,7 +134,7 @@ export default {
         this.headerLeft = 65;
       }
     },
-    querySearch(queryString, cb) {
+    querySearch (queryString, cb) {
       this.hasResults = true;
       this.queryStrlen = queryString.length;
       var restaurants = this.restaurants;
@@ -118,7 +150,7 @@ export default {
       }
       cb(results);
     },
-    createFilter(queryString) {
+    createFilter (queryString) {
       return restaurant => {
         let searchIndex = restaurant.strippedContent
           .toLowerCase()
@@ -132,11 +164,11 @@ export default {
         return searchIndex > -1;
       };
     },
-    handleSelect(item) {
+    handleSelect (item) {
       if (item.title === this.searchReply) return;
       this.$router.push(item.path);
     },
-    getScrollTop() {
+    getScrollTop () {
       var scrollPos;
       if (typeof window === "undefined") return;
       if (window.pageYOffset) {
@@ -148,7 +180,7 @@ export default {
       }
       return scrollPos;
     },
-    bindScrl() {
+    bindScrl () {
       const _this = this;
       let topScroll = _this.getScrollTop();
       if (topScroll > 190) {
@@ -156,7 +188,7 @@ export default {
       } else {
         this.hasShadow = false;
       }
-      window.onscroll = function() {
+      window.onscroll = function () {
         let topScroll = _this.getScrollTop();
         if (topScroll > 190) {
           _this.hasShadow = true;
@@ -166,10 +198,10 @@ export default {
       };
     }
   },
-  mounted() {
+  mounted () {
     this.bindScrl();
   },
-  activated() {
+  activated () {
     this.bindScrl();
   }
 };

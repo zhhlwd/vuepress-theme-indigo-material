@@ -1,25 +1,60 @@
 <template>
   <div class="marginTop">
-    <el-row type="flex" justify="center" align="middle" v-if="!content.length">
-      <el-col :span="20" :xs="{span:23}" :sm="{span:23}" :md="{span:23}" :lg="{span:20}">
-        <div  key="noHasPost">
+    <el-row
+      v-if="!content.length"
+      type="flex"
+      justify="center"
+      align="middle"
+    >
+      <el-col
+        :span="20"
+        :xs="{span: 23}"
+        :sm="{span: 23}"
+        :md="{span: 23}"
+        :lg="{span: 20}"
+      >
+        <div key="noHasPost">
           <p class="post-title-time">现在什么都没有,快点开始你的第一篇文章吧~~</p>
         </div>
       </el-col>
     </el-row>
-    <el-row type="flex" justify="center" align="middle" v-for="item in posts" :key="item.id">
-      <el-col :span="20" :xs="{span:23}" :sm="{span:23}" :md="{span:23}" :lg="{span:20}">
+    <el-row
+      type="flex"
+      justify="center"
+      align="middle"
+      v-for="item in posts"
+      :key="item.id"
+    >
+      <el-col
+        :span="20"
+        :xs="{span: 23}"
+        :sm="{span: 23}"
+        :md="{span: 23}"
+        :lg="{span: 20}"
+      >
         <el-card class="box-card">
           <div slot="header">
             <p class="post-title-time">{{item.lastUpdated}}</p>
-            <router-link :to="item.path" class="post-title-link">{{item.title}}</router-link>
+            <router-link
+              :to="item.path"
+              class="post-title-link"
+            >{{item.title}}</router-link>
           </div>
           <div v-if="(item.excerpt && item.tags.length)">
             <div v-if="item.excerpt">
-              <div class="post-excerpt">{{"摘要~~~："+item.excerpt}}</div>
+              <div class="post-excerpt">{{"摘要~~~：" + item.excerpt}}</div>
             </div>
-            <div class="post-footer" v-if="item.tags.length">
-              <el-tag @click="toTaglist" v-for="tag in item.tags" size="medium" :hit="true">{{tag}}</el-tag>
+            <div
+              class="post-footer"
+              v-if="item.tags.length"
+            >
+              <el-tag
+                @click="toTaglist"
+                v-for="(tag, index) in item.tags"
+                :key="index"
+                size="medium"
+                :hit="true"
+              >{{tag}}</el-tag>
             </div>
           </div>
         </el-card>
@@ -32,7 +67,13 @@
       align="middle"
       v-show="content.length"
     >
-      <el-col :span="16" :xs="{span:24}" :sm="{span:20}" :md="{span:18}" :lg="{span:16}">
+      <el-col
+        :span="16"
+        :xs="{span: 24}"
+        :sm="{span: 20}"
+        :md="{span: 18}"
+        :lg="{span: 16}"
+      >
         <el-pagination
           :current-page="currentPage"
           class="pagination"
@@ -50,7 +91,7 @@
 <script>
 export default {
   name: "Home",
-  data() {
+  data () {
     return {
       currentPage: 1
     };
@@ -58,16 +99,14 @@ export default {
   props: {
     content: {
       type: Array,
-      default() {
-        return [];
-      }
+      default: () => []
     }
   },
   computed: {
-    pagination() {
+    pagination () {
       return +this.$themeConfig.pagination || 5;
     },
-    posts() {
+    posts () {
       return this.content.slice(
         this.pagination * this.currentPage - this.pagination,
         this.pagination * this.currentPage
@@ -75,11 +114,11 @@ export default {
     }
   },
   methods: {
-    changePage(index) {
+    changePage (index) {
       this.currentPage = index;
       window.scrollTo({ top: 0 });
     },
-    toTaglist(e) {
+    toTaglist (e) {
       this.$router.push("/tags/" + e.target.innerText);
     }
   }

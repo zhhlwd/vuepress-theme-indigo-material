@@ -3,19 +3,33 @@
     <el-container class="main-container">
       <my-aside :isHide="isHide"></my-aside>
       <el-container class="container-warp">
-        <my-header :restaurants="search" :showIcon="isHide" @clickMenu="clickMenu"></my-header>
-        <my-main :isHide="isHide" :content="content"></my-main>
+        <my-header
+          @clickMenu="clickMenu"
+          :restaurants="search"
+          :showIcon="isHide"
+        ></my-header>
+        <my-main
+          :isHide="isHide"
+          :content="content"
+        ></my-main>
       </el-container>
       <go-top></go-top>
     </el-container>
-    <my-footer :content="content" :isHide="isHide"></my-footer>
-    <div @click="close" class="overlay" :class="{'overlay--active':needOverlay}"></div>
+    <my-footer
+      :content="content"
+      :isHide="isHide"
+    ></my-footer>
+    <div
+      @click="close"
+      class="overlay"
+      :class="{'overlay--active': needOverlay}"
+    ></div>
   </div>
 </template>
 <script>
 export default {
   name: "Layout",
-  data: function() {
+  data () {
     return {
       isHide: false,
       needOverlay: false,
@@ -23,7 +37,7 @@ export default {
       search: []
     };
   },
-  created() {
+  created () {
     import(/* webpackChunkName: "content" */ "imData/content.js").then(
       content => {
         this.content = content.default;
@@ -35,14 +49,14 @@ export default {
     });
   },
   methods: {
-    clickMenu() {
+    clickMenu () {
       this.isHide = !this.isHide;
       if (typeof window === "undefined") return;
       if (document.body.clientWidth <= 1200) {
         this.needOverlay = !this.needOverlay;
       }
     },
-    close() {
+    close () {
       this.needOverlay = !this.needOverlay;
       this.isHide = !this.isHide;
     }
