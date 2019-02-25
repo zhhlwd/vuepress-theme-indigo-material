@@ -134,7 +134,7 @@ vuepress 默认有编译一些对老版本浏览器的兼容, 具体控制请看
 下载分支的命令:
 
 ```sh
-git clone -b template https://github.com/zhhlwd/vuepress-theme-indigo-materia.git
+git clone -b template https://github.com/zhhlwd/vuepress-theme-indigo-material.git
 ```
 
 这是 template 的目录说明
