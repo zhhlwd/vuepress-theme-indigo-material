@@ -18,7 +18,6 @@ module.exports = (options, ctx) => ({
   enhanceAppFiles: path.resolve(__dirname, 'enhanceApp.js'),
   chainWebpack(config) {
     const externals = {
-      vue: 'Vue',
       vssue: 'Vssue'
     };
     config.merge({ externals });
