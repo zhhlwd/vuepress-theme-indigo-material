@@ -152,6 +152,20 @@
       color darken(color, 20%)
       border-color color!important
       background lighten(color, 90%)!important
-    border-radius: 4px;
+      border-radius: 4px;
 
     .line-numbers-wrapper
+      position absolute
+      top 0
+      width $lineNumbersWrapperWidth
+      text-align center
+      color rgba(255, 255, 255, 0.3)
+      padding 1.25rem 0
+      line-height 1.4
+      br
+        user-select none
+      .line-number
+        position relative
+        z-index 4
+        user-select none
+        font-size 0.85em
