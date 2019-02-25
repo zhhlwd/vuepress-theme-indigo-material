@@ -1,5 +1,6 @@
 ## 最近更新
-
+- 修复css代码意外丢失
+- 修复因为ssr而导致的vue在某些情况下更新视图报错和错误复用，推荐把主题更新到1.0.6
 - 观察到有许多文章标题很长，因此增加了搜索框在各个屏幕宽度中的宽度，显示更多信息
 - 改变文章页底部按钮，改成只有一个按钮，在 1200px 宽下变为目录，1200px 宽以上变为回到顶部，节省空间
 - 优化文章目录吸顶功能，固定的瞬间跳动不再显得突兀
@@ -9,7 +10,7 @@
 
 ### 对于老版本升级
 
-- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.4**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
+- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.6**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
 
 ## 介绍
 
@@ -133,7 +134,7 @@ vuepress 默认有编译一些对老版本浏览器的兼容, 具体控制请看
 下载分支的命令:
 
 ```sh
-git clone -b template https://github.com/zhhlwd/vuepress-theme-indigo-materia.git
+git clone -b template https://github.com/zhhlwd/vuepress-theme-indigo-material.git
 ```
 
 这是 template 的目录说明
