@@ -91,7 +91,7 @@ export default {
   opacity: 0;
   transform: scale(0);
 }
-@media (min-width: 1200px) {
+@media (min-width: 1190px) {
   .gotop-btn {
     display: inline-block;
   }

@@ -111,7 +111,7 @@ export default {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1190px) {
   .footerMargin .footer-top, .footerMargin .footer-bottom {
     margin-left: 0 !important;
   }

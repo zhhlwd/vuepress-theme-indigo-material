@@ -206,7 +206,7 @@ export default {
   font-size: 16px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1190px) {
   .menu {
     transform: translate(-100%, 0px);
   }

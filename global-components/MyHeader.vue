@@ -115,7 +115,7 @@ export default {
     },
     iconName () {
       if (typeof window === "undefined") return "icon-caidan";
-      if (document.body.clientWidth <= 1200) {
+      if (window.innerWidth <= 1190) {
         return this.showIcon ? "icon-guanbi" : "icon-caidan";
       }
       return this.showIcon ? "icon-caidan" : "icon-guanbi";
@@ -125,7 +125,7 @@ export default {
     clickMenu () {
       this.$emit("clickMenu");
       if (typeof window === "undefined") return;
-      if (document.body.clientWidth <= 1200) {
+      if (window.innerWidth <= 1190) {
         return;
       }
       if (this.headerLeft == 65) {
@@ -211,7 +211,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1190px) {
   #topHeader {
     padding-left: 0 !important;
   }

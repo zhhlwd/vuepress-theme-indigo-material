@@ -11,7 +11,4 @@ import 'imStyles/content.styl';
 export default ({ Vue, router }) => {
   Vue.use(routes, { router });
   Vue.use(importElement);
-  if (typeof window !== 'undefined') {
-    window.Vue = Vue;
-  }
 };

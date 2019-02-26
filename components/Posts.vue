@@ -1,5 +1,5 @@
 <template>
-  <div :key="$page.title" v-if="showPost">
+  <div :key="$page.title">
     <el-row
       type="flex"
       justify="center"
@@ -113,8 +113,7 @@ export default {
       catalogList: [],
       currentIndex: 0,
       offsetList: [],
-      hasToc: false,
-      showPost:false,
+      hasToc: false
     };
   },
   props: {
@@ -130,7 +129,6 @@ export default {
     }, 100);
   },
   mounted () {
-    this.showPost =true;
     setTimeout(() => {
       this.getH();
       this.changeIndex();
@@ -306,7 +304,7 @@ export default {
   box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
     0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
 }
-@media (max-width: 1200px) {
+@media (max-width: 1190px) {
   .post-card {
     margin-right: 0;
   }
@@ -349,7 +347,7 @@ export default {
   margin-left: 45px;
   height: 60vh;
   overflow-y: auto;
-  width: 19vw;
+  width: 18vw;
   top: 69px;
   right: 24px;
   border-radius: 16px;
@@ -359,7 +357,14 @@ export default {
   position: fixed;
   top: 69px;
 }
-@media (max-width: 1200px) {
+
+@media (min-width: 1190px) {
+  .post-card {
+    width: 66.66667%;
+  }
+}
+
+@media (max-width: 1190px) {
   .post-toc {
     position: fixed;
     top: auto;

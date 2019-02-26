@@ -27,23 +27,18 @@
   </div>
 </template>
 <script>
+import content from "imData/content.js";
 export default {
   name: "Layout",
   data () {
     return {
       isHide: false,
       needOverlay: false,
-      content: [],
+      content: content,
       search: []
     };
   },
   created () {
-    import(/* webpackChunkName: "content" */ "imData/content.js").then(
-      content => {
-        this.content = content.default;
-      }
-    );
-
     import(/* webpackChunkName: "search" */ "imData/search.js").then(search => {
       this.search = search.default;
     });
@@ -52,7 +47,7 @@ export default {
     clickMenu () {
       this.isHide = !this.isHide;
       if (typeof window === "undefined") return;
-      if (document.body.clientWidth <= 1200) {
+      if (window.innerWidth <= 1190) {
         this.needOverlay = !this.needOverlay;
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="tag-content" v-if="showTags">
+  <div class="tag-content">
     <el-row
       type="flex"
       align="center"
@@ -55,13 +55,13 @@
   </div>
 </template>
 <script>
+import tagsList from 'imData/tagsList.js'
 export default {
   name: "Tags",
   data () {
     return {
       tagName: "",
-      tagsList: {},
-      showTags:false
+      tagsList: tagsList
     };
   },
   props: {
@@ -102,15 +102,6 @@ export default {
         document.getElementById("conentHeader").innerText = to.params.tag;
       }
     }
-  },
-  created () {
-    this.checkRouter();
-    import(/* webpackChunkName: "tagsList" */ "imData/tagsList.js").then(
-      tagsList => {
-        this.showTags = true;
-        this.tagsList = tagsList.default;
-      }
-    );
   }
 };
 </script>
@@ -153,6 +144,12 @@ export default {
   &:first-child,
   &:nth-child(2) {
     margin-top: 30px;
+  }
+}
+
+@media (min-width: 1190px) {
+  .tag-card {
+    width: 83.33333%;
   }
 }
 </style>

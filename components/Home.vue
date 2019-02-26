@@ -13,6 +13,7 @@
         :sm="{span: 23}"
         :md="{span: 23}"
         :lg="{span: 20}"
+        class="post-card"
       >
         <el-card class="box-card">
           <div slot="header">
@@ -178,7 +179,13 @@ export default {
   align-items: center;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 1190px) {
+  .post-card {
+    width: 83.33333%;
+  }
+}
+
+@media (max-width: 1190px) {
   .box-card:first-child {
     margin-top: 5px;
   }

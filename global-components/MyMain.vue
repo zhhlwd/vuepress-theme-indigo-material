@@ -35,7 +35,26 @@ export default {
   computed: {
     whichComponent() {
       let w = "";
-      if (typeof window === "undefined") return "Home";
+      if (typeof window === "undefined") {
+        switch (this.$page.path.slice(1, 6)) {
+          case "posts":
+            w = "Posts";
+            break;
+          case "all/":
+            +"||" + this.$site.title;
+            w = "All";
+            break;
+          case "tags/":
+            w = "Tags";
+            break;
+          case "about":
+            w = "About";
+            break;
+          default:
+            w = "Home";
+        }
+        return w
+      }
 
       switch (this.$route.path.slice(1, 6)) {
         case "posts":
@@ -74,11 +93,11 @@ export default {
       return w;
     },
     mainLeft () {
-      let l = 230;
+      let l = 240;
       if (this.isHide) {
         l = 60;
       } else {
-        l = 230;
+        l = 240;
       }
       return l;
     }
@@ -95,7 +114,7 @@ export default {
   width: 100%;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1190px) {
   .my-main {
     margin-left: 0 !important;
   }

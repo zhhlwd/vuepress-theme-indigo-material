@@ -100,7 +100,7 @@ export default {
   font-size: 33px;
   line-height: 48px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1190px) {
   .content-header {
     margin-left: 0;
     padding-left: 21px;

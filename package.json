@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-indigo-material",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Material Design theme for vuepress",
   "main": "index.js",
   "private": false,
@@ -21,7 +21,8 @@
   "license": "MIT",
   "dependencies": {
     "element-ui": "^2.5.4",
-    "vssue": "^0.7.1"
+    "vssue": "^0.7.1",
+    "@vssue/api-github-v3": "^0.7.3"
   },
   "devDependencies": {
     "babel-plugin-component": "^1.1.1",

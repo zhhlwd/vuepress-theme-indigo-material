@@ -1,7 +1,7 @@
 <template>
-  <div class="all-warp" v-if="showPoList">
+  <div class="all-warp">
     <div
-      v-for="(item,index) in poList"
+      v-for="(item, index) in poList"
       :key="index"
     >
       <h3>{{item[0]}}</h3>
@@ -20,7 +20,7 @@
             :lg="{span:20}"
             :key="i"
             v-if="i !== 0"
-            class="post"
+            class="post post-card"
           >
             <el-card class="box-card">
               <div slot="header">
@@ -55,12 +55,12 @@
   </div>
 </template>
 <script>
+import poList from 'imData/poList.js'
 export default {
   name: "All",
   data () {
     return {
-      poList: [],
-      showTags:false
+      poList: poList
     };
   },
   props: {
@@ -73,12 +73,6 @@ export default {
     toTaglist (e) {
       this.$router.push("/tags/" + e.target.innerText);
     }
-  },
-  created () {
-    import(/* webpackChunkName: "poList" */ "imData/poList.js").then(poList => {
-      this.showPoList = true;
-      this.poList = poList.default;
-    });
   }
 };
 </script>
@@ -100,5 +94,11 @@ export default {
 
 .post {
   margin: 10px;
+}
+
+@media (min-width: 1190px) {
+  .post-card {
+    width: 83.33333%;
+  }
 }
 </style>

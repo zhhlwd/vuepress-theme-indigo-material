@@ -16,12 +16,6 @@ module.exports = (options, ctx) => ({
     ]
   ],
   enhanceAppFiles: path.resolve(__dirname, 'enhanceApp.js'),
-  chainWebpack(config) {
-    const externals = {
-      vssue: 'Vssue'
-    };
-    config.merge({ externals });
-  },
   chainMarkdown(config) {
     config.plugin('toc').tap(([options]) => [
       Object.assign(options, {

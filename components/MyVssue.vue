@@ -1,24 +1,39 @@
+<template>
+  <div v-if="$themeConfig.vssue.need">
+      <Vssue
+        :title="$page.title"
+        :options="options"
+        class="vssue-warp"
+      />
+  </div>
+</template>
+
 <script>
 import "imStyles/vssue.styl";
+import { VssueComponent } from 'vssue'
+import GithubV3 from '@vssue/api-github-v3'
+
 export default {
-  name: "MyVssue",
-  render (h) {
-    if (process.env.NODE_ENV === "development") {
-      var name = "development";
-    } else {
-      var name = "production";
+  name: 'VssueDemo',
+  components: {
+    'Vssue': VssueComponent,
+  },
+  data () {
+    return {
+      title: 'Vssue Demo'
     }
-    return h("Vssue", {
-      props: {
-        title: this.$page.title,
-        options: this.$themeConfig.vssue[name]
-      },
-      class: {
-        "vssue-warp": "vssue-warp"
+  },
+  computed:{
+    options(){
+      if (process.env.NODE_ENV === "development") {
+        var name = "development";
+      } else {
+        var name = "production";
       }
-    });
+      return Object.assign({api: GithubV3},this.$themeConfig.vssue[name]);
+    }
   }
-};
+}
 </script>
 <style lang="stylus">
 .vssue-warp {
