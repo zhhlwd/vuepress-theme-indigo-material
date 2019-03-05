@@ -10,27 +10,21 @@ module.exports = (options, ctx) => ({
         transformer: timestamp => {
           const moment = require('moment');
           moment.locale('zh-CN');
-          return moment(timestamp).format('YYYY-MM-DD HH:mm:ss');
+          return moment(timestamp).format(
+            'YYYY-MM-DD HH:mm:ss'
+          );
         }
       }
     ]
   ],
   enhanceAppFiles: path.resolve(__dirname, 'enhanceApp.js'),
   chainMarkdown(config) {
-    config.plugin('toc').tap(([options]) => [
-      Object.assign(options, {
-        includeLevel: [1, 2, 3, 4, 5, 6],
-        forceFullToc: true,
-        listType: 'ol',
-        format: headingAsString => {
-          return headingAsString;
-        }
-      })
-    ]);
     config
       .plugin('anchor')
       .tap(([options]) => [
-        Object.assign(options, { level: [1, 2, 3, 4, 5, 6] })
+        Object.assign(options, {
+          level: [1, 2, 3, 4, 5, 6]
+        })
       ]);
   },
   alias: {
@@ -43,7 +37,8 @@ module.exports = (options, ctx) => ({
   async ready() {
     //生成客户端所需的数据
     //只处理posts文件夹下的文件
-    const postsFilter = val => val.path.slice(1, 6) === 'posts';
+    const postsFilter = val =>
+      val.path.slice(1, 6) === 'posts';
     //排序函数
     const postsSorter = (prev, next) => {
       const prevTime =
@@ -71,7 +66,10 @@ module.exports = (options, ctx) => ({
       let str = '';
       str = dateStr.slice(0, 7);
       const arr = str.split('-');
-      let result = [arr[0] + '-' + arr[1], Number(arr[0]) + Number(arr[1])];
+      let result = [
+        arr[0] + '-' + arr[1],
+        Number(arr[0]) + Number(arr[1])
+      ];
       return result;
     }
     //开始格式化和排序
@@ -88,7 +86,12 @@ module.exports = (options, ctx) => ({
       //遍历posts目录生成包含所有文章信息的 archived
       let page = {};
       let sear = {};
-      let { excerpt, lastUpdated, path, _strippedContent } = val;
+      let {
+        excerpt,
+        lastUpdated,
+        path,
+        _strippedContent
+      } = val;
       let { tags, title } = val.frontmatter;
       if (_strippedContent) {
         _strippedContent = _strippedContent
@@ -167,9 +170,13 @@ module.exports = (options, ctx) => ({
         return poList[0].push(val);
       }
       if (i + 1 !== archived.length) {
-        var result2 = changeTime(archived[i + 1].lastUpdated);
+        var result2 = changeTime(
+          archived[i + 1].lastUpdated
+        );
       } else {
-        var result2 = changeTime(archived[i - 1].lastUpdated);
+        var result2 = changeTime(
+          archived[i - 1].lastUpdated
+        );
       }
       if (!poList[index]) {
         poList[index] = [result1[0]];
@@ -188,21 +195,32 @@ module.exports = (options, ctx) => ({
 
     fs.writeFile(
       `${dataPath}/content.js`,
-      `export default ${JSON.stringify(archived, null, 2)};`,
+      `export default ${JSON.stringify(
+        archived,
+        null,
+        2
+      )};`,
       error => {
         if (error)
-          return console.log('写入首页content文件失败,原因是' + error.message);
+          return console.log(
+            '写入首页content文件失败,原因是' + error.message
+          );
         console.log('写入首页content文件成功');
       }
     );
 
     fs.writeFile(
       `${dataPath}/tagsList.js`,
-      `export default ${JSON.stringify(tagsList, null, 2)};`,
+      `export default ${JSON.stringify(
+        tagsList,
+        null,
+        2
+      )};`,
       error => {
         if (error)
           return console.log(
-            '写入标签页tagsList文件失败,原因是' + error.message
+            '写入标签页tagsList文件失败,原因是' +
+              error.message
           );
         console.log('写入标签页tagsList文件成功');
       }
@@ -213,7 +231,9 @@ module.exports = (options, ctx) => ({
       `export default ${JSON.stringify(search, null, 2)};`,
       error => {
         if (error)
-          return console.log('写入搜索search文件失败,原因是' + error.message);
+          return console.log(
+            '写入搜索search文件失败,原因是' + error.message
+          );
         console.log('写入搜索search文件成功');
       }
     );
@@ -223,7 +243,10 @@ module.exports = (options, ctx) => ({
       `export default ${JSON.stringify(poList, null, 2)};`,
       error => {
         if (error)
-          return console.log('写入归档页poList文件失败,原因是' + error.message);
+          return console.log(
+            '写入归档页poList文件失败,原因是' +
+              error.message
+          );
         console.log('写入归档页poList文件成功');
       }
     );
