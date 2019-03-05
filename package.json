@@ -14,7 +14,7 @@
   "dependencies": {
     "element-ui": "^2.5.4",
     "vssue": "^0.7.1",
-    "vuepress-theme-indigo-material": "^1.0.8",
+    "vuepress-theme-indigo-material": "^1.0.9",
     "@vssue/api-github-v3": "^0.7.3"
   },
   "devDependencies": {
