@@ -25,7 +25,7 @@
           </div>
           <div v-if="(item.excerpt && item.tags.length)">
             <div v-if="item.excerpt">
-              <div class="post-excerpt">{{"摘要~~~：" + item.excerpt}}</div>
+              <div class="post-excerpt" v-html="item.excerpt"></div>
             </div>
             <div
               class="post-footer"

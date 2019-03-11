@@ -105,6 +105,7 @@ module.exports = (options, ctx) => ({
             ? _strippedContent.slice(0, 200) + '......'
             : false) ||
           '';
+        excerpt = excerpt.replace(/#/g, '');
       } else {
         excerpt = '';
       }
