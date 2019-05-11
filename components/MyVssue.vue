@@ -25,12 +25,32 @@ export default {
   },
   computed:{
     options(){
+      let name;
       if (process.env.NODE_ENV === "development") {
-        var name = "development";
+        name = "development";
       } else {
-        var name = "production";
+        name = "production";
       }
-      return Object.assign({api: GithubV3},this.$themeConfig.vssue[name]);
+      return Object.assign({
+        api: GithubV3,
+        locale: 'zh',
+      }, Object.entries({
+          ...this.$themeConfig.vssue.options,
+          ...this.$themeConfig.vssue[name],
+        })
+        .reduce(function (a, [k,v]) {
+
+          if (v != null)
+          {
+            a[k] = v;
+          }
+          else if (a[k] == null) {
+            delete a[k];
+          }
+          return a;
+        }, {
+          ...this.$themeConfig.vssue.options,
+        }));
     }
   }
 }
