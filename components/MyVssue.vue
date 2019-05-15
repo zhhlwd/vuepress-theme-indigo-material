@@ -23,34 +23,32 @@ export default {
       title: 'Vssue Demo'
     }
   },
-  computed:{
-    options(){
+  computed: {
+    options() {
       let name;
       if (process.env.NODE_ENV === "development") {
         name = "development";
       } else {
         name = "production";
       }
-      return Object.assign({
-        api: GithubV3,
-        locale: 'zh',
-      }, Object.entries({
-          ...this.$themeConfig.vssue.options,
-          ...this.$themeConfig.vssue[name],
-        })
-        .reduce(function (a, [k,v]) {
-
-          if (v != null)
-          {
-            a[k] = v;
-          }
-          else if (a[k] == null) {
-            delete a[k];
-          }
-          return a;
-        }, {
-          ...this.$themeConfig.vssue.options,
-        }));
+      return Object.assign(
+        { api: GithubV3 },
+        this.optionFilter(this.$themeConfig.vssue.option),
+        this.optionFilter(this.$themeConfig.vssue[name])
+      );
+    }
+  },
+  methods: {
+    optionFilter(obj) {
+      if (Object.prototype.toString.call(obj).split(8, -1) !== "object") {
+        return {};
+      }
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key) && !obj[key]) {
+          delete obj[key];
+        }
+      }
+      return obj;
     }
   }
 }
