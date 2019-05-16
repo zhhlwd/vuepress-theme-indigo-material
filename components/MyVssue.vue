@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     optionFilter(obj) {
-      if (Object.prototype.toString.call(obj).split(8, -1) !== "object") {
+      if (Object.prototype.toString.call(obj).slice(8, -1) !== "Object) {
         return {};
       }
       for (const key in obj) {
