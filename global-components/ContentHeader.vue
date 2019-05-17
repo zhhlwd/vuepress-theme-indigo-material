@@ -7,12 +7,14 @@
   </div>
 </template>
 <script>
+  import Bus from "imUtils/Bus";
   export default {
     name: "FixedHeader",
     data() {
       return {
         description: "",
-        isPosts: false
+        isPosts: false,
+        tagName: ""
       };
     },
     props: {
@@ -49,7 +51,7 @@
             }, 20);
             break;
           case "tags/":
-            t = "";
+            t = this.tagName || "";
             this.isPosts = false;
             this.description = "";
             break;
@@ -65,6 +67,11 @@
         }
         return t;
       }
+    },
+    mounted() {
+      Bus.$on("changeContentHeader", tagName => {
+        this.tagName = tagName;
+      });
     }
   };
 </script>
