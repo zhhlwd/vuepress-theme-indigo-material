@@ -2,7 +2,8 @@ module.exports = {
   base: '/', //部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 Github pages，如果你想将你的网站部署到 https://foo.github.io/bar/，那么 base 应该被设置成 "/bar/"，它的值应当总是以斜杠开始，并以斜杠结束。
   dest: './dist',
   title: 'zhhlwd',
-  description: '三人行，必有我师焉，择其善者而从之，其不善者而改之。', //网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中,还显示在首页的文章列表上面
+  description:
+    '三人行，必有我师焉，择其善者而从之，其不善者而改之。', //网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中,还显示在首页的文章列表上面
   head: [
     [
       'link',
@@ -17,7 +18,8 @@ module.exports = {
     '/': {
       lang: 'zh-CN',
       title: 'zhhlwd',
-      description: '三人行，必有我师焉，择其善者而从之，其不善者而改之。'
+      description:
+        '三人行，必有我师焉，择其善者而从之，其不善者而改之。'
     }
   },
   markdown: {
@@ -35,21 +37,21 @@ module.exports = {
     vssue: {
       //评论的配置,
       need: false, //是否需要评论
+      option: {
+        //公共的Vssue配置
+        owner: '', //用户名
+        repo: '', //仓库名
+        locale: 'zh'
+      },
       development: {
         //开发环境下的配置
         clientId: '',
-        clientSecret: '',
-        owner: '',
-        repo: '',
-        locale: 'zh'
+        clientSecret: ''
       },
       production: {
         //生产环境的配置
         clientId: '',
-        clientSecret: '',
-        owner: '',
-        repo: '',
-        locale: 'zh'
+        clientSecret: ''
       }
     },
     menus: {

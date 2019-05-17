@@ -25,7 +25,7 @@
 
 本主题在我的有 51 篇博客笔记下, 部署在 github page,网页加载速度非常快,更快的是,网页加载完成后,此后每个页面的打开速度,都是仿佛在点击本地文件.
 
-具体感受可以点击我的[博客网站](https://zhhlwd.github.io/)来亲身感受, 部署在 github page 下, 国内请可以点击码云的 [page 地址](https://zhhlwd.gitee.io/)
+具体感受，国内请点击码云的 [博客网站（国内 gitee）](https://zhhlwd.gitee.io/)，国外请点击我的[博客网站（国外 github）](https://zhhlwd.github.io/)来亲身感受, 部署在 github page 下
 
 正如 VuePress 文档所说:
 
@@ -233,7 +233,7 @@ git commit -m '新建文章xxx'
 
 **tags**: 字段**必须是数组**,如果没有则要写上一个空数组 _[]_,这样此文章会被分类到 _'未分类'_,我的建议是最好写上内容, 它是文章的内容标签, 是一种分类
 
-**categories**字段已经放弃, 因为它和**tags\***字段的作用重复
+**categories**字段已经放弃, 因为它和**tags**字段的作用重复
 
 **摘要\*** :vuepress 内置了文章内容摘抄功能,这也是本主题首先判断收录的,如果没有才去从文章内容中截取一段,所以您可以完全自定义文章在首页列表的摘要了,例如一段简单明了的介绍,会让人更加想点击进去,这功能开启方式是 \<\!\-\- more \-\-\> 注释，该注释之前的内容会被抓取为文章的摘要
 
@@ -252,6 +252,8 @@ git commit -m '新建文章xxx'
 如果需要则需要**创建两个新的 github OAuth App**,Vssue 的[文档](https://vssue.js.org/zh/guide/github.html)有简单明了的操作过程,
 
 填写的 url 一个是**http://localhost:8080/**, 一个是您**将要部署到的网站地址**, 它们分别用在本地测试环境和线上环境,对应的字段分别是**development**和**production**
+
+还有一个字段是**option**，是一个对象，存放**development**和**production**共有的属性，具体可以参考 template 分支的模板配置
 
 拿到两组**clientId**和**clientSecret**后,还要一个存放 issue 评论的 github 仓库,得到**owner**和**repo**, 也就是仓库所有者名和仓库名, 存放 issue 的仓库在本地环境和线上环境中可以相同, 除了这四个字段是必须的,其它字段可以自行去[Vssue 的文档](https://vssue.js.org/zh/options/)中查询
 
