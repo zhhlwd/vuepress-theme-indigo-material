@@ -37,9 +37,11 @@
             >
               <a
                 class="toc-link ellipsis"
-                :href="'#' + item"
+                :href="'#' + item.id"
                 :style="{marginLeft: offsetList[index] * 12 + 'px'}"
-              >{{'H' + (offsetList[index] + 1) + ' . ' + item}}</a>
+              >
+              <!-- Workaround of default config for https://vuepress.vuejs.org/config/#markdown-anchor -->
+              {{'H' + (offsetList[index] + 1) + ' . ' + item.textContent.substring(2)}}</a>
             </li>
           </ul>
         </div>
@@ -171,7 +173,7 @@ export default {
       let nodeArr = [].slice.call(allH);
       nodeArr.forEach((val, i) => {
         this.allH.push(val.offsetTop);
-        this.catalogList.push(val.id);
+        this.catalogList.push(val);
         if (i === 0) {
           a.push(0);
         } else {
