@@ -86,18 +86,20 @@ vuepress 默认有编译一些对老版本浏览器的兼容, 具体控制请看
 
 ```json
   "dependencies": {
-    "element-ui": "^2.5.4",
-    "vssue": "^0.7.1",
-    "@vssue/api-github-v3": "^0.7.3"
+    "@vssue/api-github-v3": "0.7.5",
+    "element-ui": "2.5.4",
+    "vssue": "0.9.1"
   },
   "devDependencies": {
-    "babel-plugin-component": "^1.1.1",
-    "moment": "^2.24.0",
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
-    "vuepress": "^1.0.0-alpha.39"
+    "babel-eslint": "8.2.6",
+    "babel-plugin-component": "1.1.1",
+    "eslint": "5.0.0",
+    "eslint-plugin-vue": "5.2.2",
+    "moment": "2.24.0",
+    "node-sass": "4.11.0",
+    "sass-loader": "7.1.0",
+    "vuepress": "1.0.0-alpha.47"
   }
-
 ```
 
 为此我已经准备好了一套模板, 部署在 template 分支下,您只需要的是**下载下来**, 双击目录下的 init.sh 文件,等它完成就行了,
