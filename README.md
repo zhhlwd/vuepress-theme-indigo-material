@@ -1,3 +1,11 @@
+<h1 align="center">vuepress-theme-indigo-material</h1>
+<p align="center">
+  <img src="https://img.shields.io/npm/l/vuepress-theme-indigo-material.svg">
+  <img src="https://img.shields.io/npm/v/vuepress-theme-indigo-material.svg">
+  <img src="https://img.shields.io/npm/dt/vuepress-theme-indigo-material.svg">
+  <img src="https://img.shields.io/github/last-commit/zhhlwd/vuepress-theme-indigo-material.svg">
+</p>
+
 ## 最近更新
 
 - 目录显示实际标题文字而不是 id
@@ -5,14 +13,6 @@
 - 完善了文章的样式
 - 优化了摘要
 - 彻底改善 SEO，文本内容全部直出到 HTML
-- 改变了媒体查询的断点，改为 1190px，比 13 寸电脑小一点
-- 去掉 Vssue 的 cdn
-- 去掉了 vue.js 的 cdn，因为会使得在 Linux 系统下 build 报错，推荐把主题更新到**1.0.13**
-- 修复 css 代码意外丢失
-- 修复因为 ssr 而导致的 vue 在某些情况下更新视图报错和错误复用
-- 观察到有许多文章标题很长，因此增加了搜索框在各个屏幕宽度中的宽度，显示更多信息
-- 改变文章页底部按钮，改成只有一个按钮，在 1190px 宽下变为目录，1190px 宽以上变为回到顶部，节省空间
-- 优化文章目录吸顶功能，固定的瞬间跳动不再显得突兀
 
 ### 对于老版本升级
 
@@ -45,7 +45,6 @@
 - 拥抱 vue, 然后能享用它的生态, 例如组件库, 本主题就利用了 element ui
 - 享用 vuepress 的拓展 , 例如在 Markdown 中 使用 Vue,自定义文章摘要
 - 兼容 hexo 原主题写的 Markdown 文件, 不用修改即可搬迁移到本主题, 前提是您原来文件有遵守原主题的规则, 例如在文件顶部有包含 YAML front matter
-- 理论上很好的 SEO
 
 ```
 ---
@@ -55,6 +54,7 @@ tags: [读书笔记, 《JavaScript权威指南》]
 ---
 ```
 
+- 理论上很好的 SEO
 - 已经发布到 npm, 只需要下载即可, 还提供一套模板文件结构, 下载依赖后立即可以使用, 还提供了相关操作的 shell 文件,双击即可,几分钟就能有自己的博客
 - 内置评论功能
 - ......
