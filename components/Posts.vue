@@ -7,11 +7,11 @@
     >
       <el-col
         :span="16"
-        :xs="{span: 24}"
-        :sm="{span: 23}"
-        :md="{span: 23}"
-        :lg="{span: 16}"
-        class="post-card"
+        :xs="{ span: 24 }"
+        :sm="{ span: 23 }"
+        :md="{ span: 23 }"
+        :lg="{ span: 16 }"
+        class="post-card post-sign"
         id="post-card"
       >
         <Content></Content>
@@ -21,7 +21,7 @@
         :span="6"
         class="post-toc"
         id="post-toc"
-        :class="{'open-toc': hasToc}"
+        :class="{ 'open-toc': hasToc }"
       >
         <h4 class="catalog-title">TOC</h4>
         <div class="catalog-body">
@@ -30,18 +30,21 @@
             class="catalog-list"
           >
             <li
-              v-for="(item,index) in catalogList"
+              v-for="(item, index) in catalogList"
               :key="index"
               class="toc-li"
-              :class="{active:currentIndex === index}"
+              :class="{ active: currentIndex === index }"
             >
               <a
                 class="toc-link ellipsis"
                 :href="'#' + item.id"
-                :style="{marginLeft: offsetList[index] * 12 + 'px'}"
-              >
-                <!-- Workaround of default config for https://vuepress.vuejs.org/config/#markdown-anchor -->
-                {{'H' + (offsetList[index] + 1) + ' . ' + item.textContent.substring(2)}}
+                :style="{ marginLeft: offsetList[index] * 12 + 'px' }"
+              >{{
+                'H' +
+                (offsetList[index] + 1) +
+                ' . ' +
+                item.textContent.substring(2)
+                }}
               </a>
             </li>
           </ul>
@@ -65,12 +68,12 @@
             tag="p"
             :to="content[prevPost].path || '/'"
             class="nav-title"
-          >{{content[prevPost].title}}</router-link>
+          >{{ content[prevPost].title }}</router-link>
         </div>
       </el-col>
       <el-col
         class="post-next"
-        :lg="{pull: 5}"
+        :lg="{ pull: 5 }"
         :span="7"
       >
         <div v-if="!isNaN(nextPost)">
@@ -82,7 +85,7 @@
             tag="p"
             :to="content[nextPost].path || '/'"
             class="nav-title"
-          >{{content[nextPost].title}}</router-link>
+          >{{ content[nextPost].title }}</router-link>
         </div>
       </el-col>
     </el-row>
@@ -161,12 +164,12 @@
         this.offsetList.splice(0, this.offsetList.length);
         this.allH.splice(0, this.allH.length);
         if (typeof window === "undefined") return;
-        if (!document.querySelector(".content,default")) {
+        if (!document.querySelector(".post-sign")) {
           return;
         }
         let a = [];
         let allH = document
-          .querySelector(".content,default")
+          .querySelector(".post-sign")
           .querySelectorAll("h1,h2,h3,h4,h5,h6");
         if (allH.length === 0) {
           return;
