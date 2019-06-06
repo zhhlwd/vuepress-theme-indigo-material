@@ -1,13 +1,22 @@
 <h1 align="center">vuepress-theme-indigo-material</h1>
 <p align="center">
-  <img src="https://img.shields.io/npm/l/vuepress-theme-indigo-material.svg">
-  <img src="https://img.shields.io/npm/v/vuepress-theme-indigo-material.svg">
-  <img src="https://img.shields.io/npm/dt/vuepress-theme-indigo-material.svg">
-  <img src="https://img.shields.io/github/last-commit/zhhlwd/vuepress-theme-indigo-material.svg">
+  <a href= "https://github.com/zhhlwd/vuepress-theme-indigo-material/blob/master/LICENSE">
+   <img src="https://img.shields.io/npm/l/vuepress-theme-indigo-material.svg">
+  </a>  
+  <a href= "https://www.npmjs.com/package/vuepress-theme-indigo-material">
+   <img src="https://img.shields.io/npm/v/vuepress-theme-indigo-material.svg">
+  </a>
+  <a href= "https://www.npmjs.com/package/vuepress-theme-indigo-material">
+   <img src="https://img.shields.io/npm/dt/vuepress-theme-indigo-material.svg">
+  </a> 
+  <a href= "https://github.com/zhhlwd/vuepress-theme-indigo-material/commits/master">
+   <img src="https://img.shields.io/github/last-commit/zhhlwd/vuepress-theme-indigo-material.svg">
+  </a> 
 </p>
 
 ## 最近更新
 
+- 修复归档页文章摘要显示，fix #11
 - 目录显示实际标题文字而不是 id
 - 更新 vuepress , node-sass 和 vssue 到最新版本，并锁死版本号
 - 完善了文章的样式
@@ -16,7 +25,7 @@
 
 ### 对于老版本升级
 
-- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.13**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
+- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.14**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
 
 ## 介绍
 
