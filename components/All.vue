@@ -32,7 +32,10 @@
               </div>
               <div v-if="(post.excerpt || post.tags.length)">
                 <div v-if="post.excerpt">
-                  <div class="post-excerpt">{{post.excerpt}}</div>
+                  <div
+                    class="post-excerpt"
+                    v-html="post.excerpt"
+                  ></div>
                 </div>
                 <div
                   class="post-footer"
@@ -55,50 +58,50 @@
   </div>
 </template>
 <script>
-import poList from 'imData/poList.js'
-export default {
-  name: "All",
-  data () {
-    return {
-      poList: poList
-    };
-  },
-  props: {
-    content: {
-      type: Array,
-      default: () => []
+  import poList from "imData/poList.js";
+  export default {
+    name: "All",
+    data() {
+      return {
+        poList: poList
+      };
+    },
+    props: {
+      content: {
+        type: Array,
+        default: () => []
+      }
+    },
+    methods: {
+      toTaglist(e) {
+        this.$router.push("/tags/" + e.target.innerText);
+      }
     }
-  },
-  methods: {
-    toTaglist (e) {
-      this.$router.push("/tags/" + e.target.innerText);
-    }
-  }
-};
+  };
 </script>
 <style lang="stylus" scoped>
-.all-warp {
-  margin-top: 15px;
+  .all-warp {
+    margin-top: 15px;
 
-  h3 {
-    color: #3f51b5;
-    font-size: 20px;
-    text-align: center;
+    h3 {
+      color: #3f51b5;
+      font-size: 20px;
+      text-align: center;
+    }
   }
-}
 
-.post-warp {
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.post {
-  margin: 10px;
-}
-
-@media (min-width: 1190px) {
-  .post-card {
-    width: 83.33333%;
+  .post-warp {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
-}
+
+  .post {
+    margin: 10px;
+  }
+
+  @media (min-width: 1190px) {
+    .post-card {
+      width: 83.33333%;
+    }
+  }
 </style>
