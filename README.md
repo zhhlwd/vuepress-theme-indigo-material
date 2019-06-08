@@ -96,9 +96,9 @@ vuepress 默认有编译一些对老版本浏览器的兼容, 具体控制请看
 
 ```json
   "dependencies": {
-    "@vssue/api-github-v3": "0.7.5",
+    "@vssue/api-github-v3": "0.7.3",
     "element-ui": "2.5.4",
-    "vssue": "0.9.1"
+    "vssue": "0.7.1"
   },
   "devDependencies": {
     "babel-eslint": "8.2.6",
