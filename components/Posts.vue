@@ -97,7 +97,9 @@
         :span="23"
         v-if="$themeConfig.vssue.need && $page.title"
       >
-        <my-vssue />
+        <ClientOnly>
+          <my-vssue />
+        </ClientOnly>
       </el-col>
     </el-row>
     <toc-btn @toc="changeToc"></toc-btn>
