@@ -16,6 +16,7 @@
 
 ## 最近更新
 
+- 修复：文章样式没有选中
 - 修复归档页文章摘要显示，fix #11
 - 目录显示实际标题文字而不是 id
 - 更新 vuepress , node-sass 和 vssue 到最新版本，并锁死版本号
@@ -25,7 +26,7 @@
 
 ### 对于老版本升级
 
-- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.15**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
+- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.16**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
 
 ## 介绍
 
