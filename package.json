@@ -12,7 +12,7 @@
     "material design"
   ],
   "dependencies": {
-    "vuepress-theme-indigo-material": "^1.0.16",
+    "vuepress-theme-indigo-material": "^1.0.17",
     "@vssue/api-github-v3": "1.0.0",
     "element-ui": "2.5.4",
     "vssue": "1.0.0"
