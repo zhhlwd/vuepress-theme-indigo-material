@@ -27,7 +27,7 @@
 
 ### 对于老版本升级
 
-- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.18**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
+- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.19**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
 
 ## 介绍
 
@@ -93,6 +93,28 @@ vuepress 默认有编译一些对老版本浏览器的兼容, 具体控制请看
 由于文件较琐碎, 配置又容易出错, 更重要的是 vuepress 1.x 现在正处于 alpha 阶段, 经常改动, 所以一定要**锁死主题依赖的版本号**, 不然很容易出错.
 
 最好让我来跟进 vuepress 的更新, 保证主题的运行不出错,最后我才去把 template 分支的版本号更新上
+
+> 这里的每个依赖的不能少, 最好用 cnpm 下载, 因为在测试中就有过模块混乱报错的情况, 而且报错大多是在浏览器的控制台, 如果出现请删除 node_modules 文件夹, 重新安装,直到没报错
+
+```json
+  "dependencies": {
+    "@vssue/api-github-v3": "1.0.0",
+    "element-ui": "2.5.4",
+    "vssue": "1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.6",
+    "babel-plugin-component": "1.1.1",
+    "eslint": "5.0.0",
+    "eslint-plugin-vue": "5.2.2",
+    "moment": "2.24.0",
+    "node-sass": "4.11.0",
+    "sass-loader": "7.1.0",
+    "vuepress": "1.0.0-alpha.47"
+  }
+```
+
+> 注意 devDependencies 的依赖不会随主题包的 npm i 安装而安装，但是他们是本主题必须要的，请安装全部依赖
 
 为此我已经准备好了一套模板, 部署在 template 分支下,您只需要的是**下载下来**, 双击目录下的 init.sh 文件,等它完成就行了,
 
