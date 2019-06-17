@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-indigo-material",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "description": "Material Design theme for vuepress",
   "main": "index.js",
   "private": false,
@@ -30,6 +30,6 @@
     "moment": "2.24.0",
     "node-sass": "4.12.0",
     "sass-loader": "7.1.0",
-    "vuepress": "1.0.0-alpha.47"
+    "vuepress": "1.0.1"
   }
 }
