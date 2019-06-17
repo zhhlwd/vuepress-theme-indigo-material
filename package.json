@@ -1,6 +1,6 @@
 {
   "name": "vuepress-theme-indigo-material",
-  "version": "1.0.19",
+  "version": "1.0.18",
   "description": "Material Design theme for vuepress",
   "main": "index.js",
   "private": false,
@@ -22,15 +22,13 @@
   "dependencies": {
     "@vssue/api-github-v3": "1.0.0",
     "element-ui": "2.5.4",
-    "vssue": "1.0.0"
-  },
-  "devDependencies": {
+    "vssue": "1.0.0",
     "babel-eslint": "8.2.6",
     "babel-plugin-component": "1.1.1",
     "eslint": "5.0.0",
     "eslint-plugin-vue": "5.2.2",
     "moment": "2.24.0",
-    "node-sass": "4.11.0",
+    "node-sass": "4.12.0",
     "sass-loader": "7.1.0",
     "vuepress": "1.0.0-alpha.47"
   }
