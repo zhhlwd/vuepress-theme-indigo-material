@@ -288,7 +288,7 @@ vuepress 的构建的确麻烦不少, 但是相当于它的网页运行速度, �
 
 您可以下载 template 分支, 然后把 master 分支下的内容**放在模板的./docs/.vuepress/theme/下,**
 
-把 pageage.json 中的**vuepress-theme-indigo-material 依赖去掉**, 把 config.js 中的**theme 字段去掉**,再执行 cnpm i,剩下的和 vuepress [开发主题](https://vuepress.vuejs.org/zh/theme/writing-a-theme.html)差不多.
+把 config.js 中的**theme 字段去掉**,再执行 cnpm i,剩下的和 vuepress [开发主题](https://vuepress.vuejs.org/zh/theme/writing-a-theme.html)差不多.
 
 ## UI 变化
 
