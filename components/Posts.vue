@@ -250,7 +250,6 @@
             function(e) {
               if (_this.$route.path.slice(0, 7) !== "/posts/") return;
               let h = _this.getScrollTop();
-              const postCard = document.getElementById("post-card");
               for (let i = 0, len = _this.allH.length; i < len; i++) {
                 if (i + 1 === _this.allH.length || h < _this.allH[i]) {
                   return (_this.currentIndex = i);
