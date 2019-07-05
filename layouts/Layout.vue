@@ -3,8 +3,10 @@
     <el-container class="main-container">
       <my-aside :isHide="isHide"></my-aside>
       <el-container class="container-warp">
-        <my-header @clickMenu="clickMenu">
+        <my-header
+          @clickMenu="clickMenu"
           :showIcon="isHide"
+        >
           ></my-header>
         <my-main
           :isHide="isHide"
