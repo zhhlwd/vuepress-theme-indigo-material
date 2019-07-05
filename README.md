@@ -28,7 +28,7 @@
 
 ### 对于老版本升级
 
-- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.21**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
+- 已经发布到 npm,只需要把 package.json 中的主题版本号改为 **1.0.22**,然后删除 node_modules 文件夹,重新运行 npm i 或者最好用 cnpm i 即可
 
 ## 介绍
 

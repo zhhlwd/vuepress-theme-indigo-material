@@ -12,7 +12,7 @@
     "material design"
   ],
   "dependencies": {
-    "vuepress-theme-indigo-material": "^1.0.21"
+    "vuepress-theme-indigo-material": "^1.0.22"
   },
   "devDependencies": {
     "babel-eslint": "8.2.6",
